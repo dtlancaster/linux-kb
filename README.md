@@ -4,7 +4,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[1.1 `cd` Shortcuts](https://github.com/dtlancaster/linux-guide/blob/master/README.md#11-cd-shortcuts)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2. Exploring the System](https://github.com/dtlancaster/linux-guide/blob/master/README.md#2-exploring-the-system)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1 Common `ls` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#21-common-ls-options)<br/>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.2 `ls` Long Listing Fields](https://github.com/dtlancaster/linux-guide/blob/master/README.md#22-ls-long-listing-fields)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.3 `less` Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#23-less-commands)<br/>
 
 # I. Learning the Shell
 
@@ -90,11 +91,102 @@
     <td></td>
     <td>Sort by modification size.</td>
   </tr>
+</table><br/>
+
+```
+-rw-r--r-- 1 root root 3576296 2017-04-03 11:05 Experience ubuntu.ogg
+-rw-r--r-- 1 root root 1186219 2017-04-03 11:05 kubuntu-leaflet.png
+-rw-r--r-- 1 root root 47584 2017-04-03 11:05 logo-Edbuntu.png
+-rw-r--r-- 1 root root 44355 2017-04-03 11:05 logo-Kubuntu.png
+-rw-r--r-- 1 root root 34931 2017-04-03 11:05 logo-Ubuntu.png
+-rw-r--r-- 1 root root 32059 2017-04-03 11:05 oo-cd-cover.odf
+-rw-r--r-- 1 root root 159744 2017-04-03 11:05 oo-derivatives.doc
+-rw-r--r-- 1 root root 27837 2017-04-03 11:05 oo-maxwell.odt
+```
+
+### 2.2 `ls` Long Listing Fields
+<table>
+  <tr>
+    <td><b>Field</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>-rw-r--r--</td>
+    <td>Access rights to the file. The first character indicates the type of file. Among the different types, a leading dash means a regular file, while a d indicates a directory. The next three characters are the access rights for the file's owner, the next three are for members of the file's group, and the final three are for everyone else.</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>File's number of hard links.</td>
+  </tr>
+  <tr>
+    <td>root</td>
+    <td>The username of the file's owner.</td>
+  </tr>
+  <tr>
+    <td>root</td>
+    <td>The name of the group that owns the file.</td>
+  </tr>
+  <tr>
+    <td>32059</td>
+    <td>Size of the file in bytes.</td>
+  </tr>
+  <tr>
+    <td>2017-04-03 11:05</td>
+    <td>Date and time of the file's last modification.</td>
+  </tr>
+  <tr>
+    <td>oo-cd-cover.odf</td>
+    <td>Name of the file.</td>
+  </tr>
 </table>
 
-
-
-
+### 2.3 `less` Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>Page Up or b</td>
+    <td>Scroll back one page</td>
+  </tr>
+  <tr>
+    <td>Page Down or Space</td>
+    <td>Scroll forward one page</td>
+  </tr>
+  <tr>
+    <td>Up arrow</td>
+    <td>Scroll up one line</td>
+  </tr>
+  <tr>
+    <td>Down arrow</td>
+    <td>Scroll down one line</td>
+  </tr>
+  <tr>
+    <td>G</td>
+    <td>Move to the end of the text file</td>
+  </tr>
+  <tr>
+    <td>1G or g</td>
+    <td>Move to the beginning of the text file</td>
+  </tr>
+  <tr>
+    <td>/characters</td>
+    <td>Search forward to the next occurrence of "characters"</td>
+  </tr>
+  <tr>
+    <td>n</td>
+    <td>Search for the next occurrence of the previous search</td>
+  </tr>
+  <tr>
+    <td>h</td>
+    <td>Display help screen</td>
+  </tr>
+  <tr>
+    <td>q</td>
+    <td>Quit less</td>
+  </tr>
+</table>
 
 
 
