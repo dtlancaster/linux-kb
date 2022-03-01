@@ -17,6 +17,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.7 `mv` Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#37-mv-examples)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.8 `rm` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#38-rm-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.9 `rm` Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#39-rm-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4. Working with Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#4-working-with-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Man Page Organization](https://github.com/dtlancaster/linux-guide/blob/master/README.md#41-man-page-organization)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2 `info` Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#42-info-commands)<br/>
 
 # I. Learning the Shell
 
@@ -558,5 +561,104 @@
     <td>Same as the previous command, except that if either <i>file1</i> or <i>dir1</i> do not exist, rm will continue silently.</td>
   </tr>
 </table>
+
+## 4. Working with Commands
+`type` Indicate how a command name is interpreted<br/>
+`which` Display which executable program will be executed<br/>
+`help` Get help for shell builtins<br/>
+`man` Display a command's manual page<br/>
+`apropos` Display a list of appropriate commands<br/>
+`info` Display a command's info entry<br/>
+`whatis` Display one-line manual page descriptions<br/>
+`alias` Create an alias for a command
+
+### 4.1 Man Page Organization
+<table>
+  <tr>
+    <td><b>Section</b></td>
+    <td><b>Contents</b></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>User commands</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Programming interfaces for kernel system calls</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Programming interfaces to the C library</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Special files such as device nodes and drivers</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>File formats</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Games and amusements such as screen savers</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Miscellaneous</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>System administration commands</td>
+  </tr>
+</table>
+
+### 4.2 `info` Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>?</td>
+    <td>Display command help</td>
+  </tr>
+  <tr>
+    <td>Page up or Backspace</td>
+    <td>Display previous page</td>
+  </tr>
+  <tr>
+    <td>Page down or Spacebar</td>
+    <td>Display next page</td>
+  </tr>
+  <tr>
+    <td>n</td>
+    <td>Next--display the next node</td>
+  </tr>
+  <tr>
+    <td>p</td>
+    <td>Previous--display the previous node</td>
+  </tr>
+  <tr>
+    <td>U</td>
+    <td>Up--display the parent node of the currently displayed node, usually a menu</td>
+  </tr>
+  <tr>
+    <td>Enter</td>
+    <td>Follow the hyperlink at the cursor location</td>
+  </tr>
+  <tr>
+    <td>Q</td>
+    <td>Quit</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
 
 
