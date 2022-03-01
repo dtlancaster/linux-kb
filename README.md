@@ -16,6 +16,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.6 `mv` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#36-mv-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.7 `mv` Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#37-mv-examples)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.8 `rm` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#38-rm-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.9 `rm` Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#39-rm-examples)<br/>
 
 # I. Learning the Shell
 
@@ -534,8 +535,28 @@
   </tr>
 </table>
 
-
-
-
+### 3.9 `rm` Examples
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Results</b></td>
+  </tr>
+  <tr>
+    <td>rm <i>file1</i></td>
+    <td>Delete <i>file1</i> silently.</td>
+  </tr>
+  <tr>
+    <td>rm -i <i>file1</i></td>
+    <td>Same as the previous command, except that the user is prompted for confirmation before the deletion is performed.</td>
+  </tr>
+  <tr>
+    <td>rm -r <i>file1 dir1</i></td>
+    <td>Delete <i>file1</i> and <i>dir1</i> and its contents.</td>
+  </tr>
+  <tr>
+    <td>rm -rf <i>file1 dir1</i></td>
+    <td>Same as the previous command, except that if either <i>file1</i> or <i>dir1</i> do not exist, rm will continue silently.</td>
+  </tr>
+</table>
 
 
