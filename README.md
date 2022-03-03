@@ -21,6 +21,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Man Page Organization](https://github.com/dtlancaster/linux-guide/blob/master/README.md#41-man-page-organization)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[4.2 `info` Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#42-info-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[5. Redirection](https://github.com/dtlancaster/linux-guide/blob/master/README.md#5-redirection)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6. Seeing the World as the Shell Sees it](https://github.com/dtlancaster/linux-guide/blob/master/README.md#6-seeing-the-world-as-the-shell-sees-it)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.1 Arithmetic Operators](https://github.com/dtlancaster/linux-guide/blob/master/README.md#61-arithmetic-operators)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2 Backslash Escape Sequences](https://github.com/dtlancaster/linux-guide/blob/master/README.md#62-backslash-escape-sequences)<br/>
 
 # I. Learning the Shell
 
@@ -654,18 +657,77 @@
 </table>
 
 ## 5. Redirection
-`cat` Concatenate files
-`sort` Sort lines of text
-`uniq` Report or omit repeated lines
-`grep` Print lines matching a pattern
-`wc` Print newline, word, and byte counts for each file
-`head` Output the first part of a file
-`tail` Output the last part of a file
+`cat` Concatenate files<br/>
+`sort` Sort lines of text<br/>
+`uniq` Report or omit repeated lines<br/>
+`grep` Print lines matching a pattern<br/>
+`wc` Print newline, word, and byte counts for each file<br/>
+`head` Output the first part of a file<br/>
+`tail` Output the last part of a file<br/>
 `tee` Read from standard input and write to standard output and files
 
+## 6. Seeing the World as the Shell Sees it
+`echo` Display a line of text
 
+### 6.1 Arithmetic Operators
+<table>
+  <tr>
+    <td><b>Operator</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>+</td>
+    <td>Addition</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>Subtraction</td>
+  </tr>
+  <tr>
+    <td>*</td>
+    <td>Multiplication</td>
+  </tr>
+  <tr>
+    <td>/</td>
+    <td>Division (but remember, since expansion supports only integer arithmetic, results are integers)</td>
+  </tr>
+  <tr>
+    <td>%</td>
+    <td>Modulo, which simply means "remainder"</td>
+  </tr>
+  <tr>
+    <td>**</td>
+    <td>Exponentiation</td>
+  </tr>
+</table>
 
-
+### 6.2 Backslash Escape Sequences
+<table>
+  <tr>
+    <td><b>Escape sequence</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>\a</td>
+    <td>Bell (an alert that causes the computer to beep)</td>
+  </tr>
+  <tr>
+    <td>\b</td>
+    <td>Backspace</td>
+  </tr>
+  <tr>
+    <td>\n</td>
+    <td>Newline; on Unix-like systems, this produces a line feed</td>
+  </tr>
+  <tr>
+    <td>\r</td>
+    <td>Carriage return</td>
+  </tr>
+  <tr>
+    <td>\t</td>
+    <td>Tab</td>
+  </tr>
+</table>
 
 
 
