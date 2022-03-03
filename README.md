@@ -28,6 +28,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.1 Cursor Movement Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#71-cursor-movement-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.2 Text Editing Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#72-text-editing-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.3 Cut-and-Paste Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#73-cut-and-paste-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.4 Completion Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#74-completion-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.5 History Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#75-history-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.6 History Expansion Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#76-history-expansion-commands)<br/>
 
 # I. Learning the Shell
 
@@ -825,11 +828,85 @@
   </tr>
 </table>
 
+### 7.4 Completion Commands
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>Alt-?</td>
+    <td>Display a list of possible completions. On most systems, you can also do this by pressing the Tab key a second time, which is much easier.</td>
+  </tr>
+  <tr>
+    <td>Alt-*</td>
+    <td>Insert all possible completions. This is useful when you want to use more than one possible match.</td>
+  </tr>
+</table>
 
+### 7.5 History Commands
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>Ctrl-P</td>
+    <td>Move to the previous history entry. This is the same action as the up arrow.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-N</td>
+    <td>Move to the next history entry. This is the same action as the down arrow.</td>
+  </tr>
+  <tr>
+    <td>Alt-< </td>
+    <td>Move to the beginning (top) of the history list.</td>
+  </tr>
+  <tr>
+    <td>Alt-></td>
+    <td>Move to the end (bottom) of the history list, i.e., the current command line.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-R</td>
+    <td>Reverse incremental search. This searches incrementally from the current command line up the history list.</td>
+  </tr>
+  <tr>
+    <td>Alt-P</td>
+    <td>Reverse search, nonincremental. With this key, type in the search string and press Enter before the search is performed.</td>
+  </tr>
+  <tr>
+    <td>Alt-N</td>
+    <td>Forward search, nonincremental.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-O</td>
+    <td>Execute the current item in the history list and advance to the next one. This is handy if you are trying to re-execute a sequence of commands in the history list.</td>
+  </tr>
+</table>
 
-
-
-
+### 7.6 History Expansion Commands
+<table>
+  <tr>
+    <td><b>Sequence</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>!!</td>
+    <td>Repeat the last command. It is probably easier to press the up arrow and Enter.</td>
+  </tr>
+  <tr>
+    <td>!<i>number</i></td>
+    <td>Repeat history list item <i>number</i>.</td>
+  </tr>
+  <tr>
+    <td>!<i>string</i></td>
+    <td>Repeat last history list item starting with <i>string</i>.</td>
+  </tr>
+  <tr>
+    <td>!?<i>string</i></td>
+    <td>Repeat last history list item containing <i>string</i>.</td>
+  </tr>
+</table>
 
 
 
