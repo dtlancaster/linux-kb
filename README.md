@@ -24,6 +24,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6. Seeing the World as the Shell Sees it](https://github.com/dtlancaster/linux-guide/blob/master/README.md#6-seeing-the-world-as-the-shell-sees-it)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.1 Arithmetic Operators](https://github.com/dtlancaster/linux-guide/blob/master/README.md#61-arithmetic-operators)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2 Backslash Escape Sequences](https://github.com/dtlancaster/linux-guide/blob/master/README.md#62-backslash-escape-sequences)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7. Advanced Keyboard Tricks](https://github.com/dtlancaster/linux-guide/blob/master/README.md#7-advanced-keyboard-tricks)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.1 Cursor Movement Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#71-cursor-movement-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.2 Text Editing Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#72-text-editing-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.3 Cut-and-Paste Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#73-cut-and-paste-commands)<br/>
 
 # I. Learning the Shell
 
@@ -728,6 +732,112 @@
     <td>Tab</td>
   </tr>
 </table>
+
+## 7. Advanced Keyboard Tricks
+`clear` Clear the terminal screen<br/>
+`history` Display or manipulate the history list
+
+### 7.1 Cursor Movement Commands
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>Ctrl-A</td>
+    <td>Move cursor to the beginning of the line.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-E</td>
+    <td>Move cursor to the end of the line.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-F</td>
+    <td>Move cursor forward one character; same as the right arrow key.</td>
+  </tr>
+  <tr>
+    <td>Alt-F</td>
+    <td>Move cursor forward one word.</td>
+  </tr>
+  <tr>
+    <td>Alt-B</td>
+    <td>Move cursor backward one word.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-L</td>
+    <td>Clear the screen and move the cursor to the top-left corner. The clear command does the same thing.</td>
+  </tr>
+</table>
+
+### 7.2 Text Editing Commands
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>Ctrl-D</td>
+    <td>Delete the character at the cursor location.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-T</td>
+    <td>Transpose (exchange) the character at the cursor location with the one preceding it.</td>
+  </tr>
+  <tr>
+    <td>Alt-T</td>
+    <td>Transpose the word at the cursor location with th eone preceding it.</td>
+  </tr>
+  <tr>
+    <td>Alt-L</td>
+    <td>Convert the charcaters from the cursor location to the end of the word to lowercase.</td>
+  </tr>
+  <tr>
+    <td>Alt-U</td>
+    <td>Convert the characters from the cursor location to the end of the word to uppercase.</td>
+  </tr>
+</table>
+
+### 7.3 Cut-and-Paste Commands
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>Ctrl-K</td>
+    <td>Kill text from the cursor location to the end of the line.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-U</td>
+    <td>Kill text from the cursor location to the beginning of the line.</td>
+  </tr>
+  <tr>
+    <td>Alt-D</td>
+    <td>Kill text from the cursor location to the end of the current word.</td>
+  </tr>
+  <tr>
+    <td>Alt-Backspace</td>
+    <td>Kill text from the cursor location to the beginning of the current word. If the cursor is at the beginning of a word, kill the previous word.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-Y</td>
+    <td>Yank text from the kill-ring and insert it at the cursor location.</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
