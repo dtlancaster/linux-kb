@@ -31,6 +31,18 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.4 Completion Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#74-completion-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.5 History Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#75-history-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[7.6 History Expansion Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#76-history-expansion-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8. Permissions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#8-permissions)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.1 File Types](https://github.com/dtlancaster/linux-guide/blob/master/README.md#81-file-types)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.2 Permission Attributes](https://github.com/dtlancaster/linux-guide/blob/master/README.md#82-permission-attributes)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.3 Permission Attribute Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#83-permission-attribute-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.4 File Modes in Binary and Octal](https://github.com/dtlancaster/linux-guide/blob/master/README.md#84-file-modes-in-binary-and-octal)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.5 `chmod` Symbolic Notation](https://github.com/dtlancaster/linux-guide/blob/master/README.md#85-chmod-symbolic-notation)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.6 `chmod` Symbolic Notation Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#86-chmod-symbolic-notation-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.7 `chown` Argument Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#87-chown-argument-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9. Processes](https://github.com/dtlancaster/linux-guide/blob/master/README.md#9-processes)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.1 Process States](https://github.com/dtlancaster/linux-guide/blob/master/README.md#91-process-states)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.2 BSD Style `ps` Column Headers](https://github.com/dtlancaster/linux-guide/blob/master/README.md#92-bsd-style-ps-column-headers)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.3 `top` Information Fields](https://github.com/dtlancaster/linux-guide/blob/master/README.md#93-top-information-fields)<br/>
 
 # I. Learning the Shell
 
@@ -907,6 +919,396 @@
     <td>Repeat last history list item containing <i>string</i>.</td>
   </tr>
 </table>
+
+## 8. Permissions
+`id` Display user identity<br/>
+`chmod` Change a file's mode<br/>
+`umask` Set the default file permissions<br/>
+`su` Run a shell as another user<br/>
+`sudo` Execute a command as another user<br/>
+`chown` Change a file's owner<br/>
+`chgrp` Change a file's group ownership<br/>
+`passwd` Change a user's password
+
+### 8.1 File Types
+<table>
+  <tr>
+    <td><b>Attribute</b></td>
+    <td><b>File type</b></td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>A regular file.</td>
+  </tr>
+  <tr>
+    <td>d</td>
+    <td>A directory.</td>
+  </tr>
+  <tr>
+    <td>l</td>
+    <td>A symbolic link. Notice that with symbolic links, the remaining file attributes are always rwxrwxrwx and are dummy values. The real file attributes are those of the file the symbolic link points to.</td>
+  </tr>
+  <tr>
+    <td>c</td>
+    <td>A <i>character special file</i>. This file type refers to a device that handles data as a stream of bytes, such as a terminal or /dev/null.</td>
+  </tr>
+  <tr>
+    <td>b</td>
+    <td>A <i>block special file</i>. This file type refers to a device that handles data in blocks, such as a hard drive or DVD drive.</td>
+  </tr>
+</table>
+
+### 8.2 Permission Attributes
+<table>
+  <tr>
+    <td><b>Attribute</b></td>
+    <td><b>Files</b></td>
+    <td><b>Directories</b></td>
+  </tr>
+  <tr>
+    <td>r</td>
+    <td>Allows a file to be opened and read.</td>
+    <td>Allows a directory's contents to be listed if the execute attribute is also set.</td>
+  </tr>
+  <tr>
+    <td>w</td>
+    <td>Allows a file to be written to or truncated; however, this attribute does not allow to be renamed or deleted. THe ability to delete or rename is determined by directory attributes.</td>
+    <td>Allows files within a directory to be created, deleted, and renamed if the execute attribute is also set.</td>
+  </tr>
+  <tr>
+    <td>x</td>
+    <td>Allows a file to be treated as a program and executed. Program files written in scripting languages must also be set as readable to be executed.</td>
+    <td>Allows a directory to be entered, e.g., cd <i>directory</i>.</td>
+  </tr>
+</table>
+
+### 8.3 Permission Attribute Examples
+<table>
+  <tr>
+    <td><b>File Attributes</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>-rwx------</td>
+    <td>A regular file that is readable, writable, and executable by the file's owner. No one else has any access.</td>
+  </tr>
+  <tr>
+    <td>-rw-------</td>
+    <td>A regular file that is readable and writable by the file's owner. No one else has any access.</td>
+  </tr>
+  <tr>
+    <td>-rw-r--r--</td>
+    <td>A regular file that is readable and writable by the file's owner. Members of the file's owner group may read the file. The file is world-readable.</td>
+  </tr>
+  <tr>
+    <td>-rwxr-xr-x</td>
+    <td>A regular file that is readable, writable, and executable by the file's owner. The file may be read and executed by everybody else.</td>
+  </tr>
+  <tr>
+    <td>-rw-rw----</td>
+    <td>A regular file that is readable and writable by the file's owner and members of the file's group owner only.</td>
+  </tr>
+  <tr>
+    <td>lrwxrwxrwx</td>
+    <td>A symbolic link. All symbolic links have "dummy" permissions. The real permissions are kept with the actual file pointed to by the symbolic link.</td>
+  </tr>
+  <tr>
+    <td>drwxrwx---</td>
+    <td>A directory. The owner and the members of the owner group may enter the directory and create, rename, and remove files within the directory.</td>
+  </tr>
+  <tr>
+    <td>drwxr-x---</td>
+    <td>A directory. The owner may enter the directory and create, rename, and delete files within the directory. Members of the owner group may enter the directory but cannot create, delete, or rename files.</td>
+  </tr>
+</table>
+
+### 8.4 File Modes in Binary and Octal
+<table>
+  <tr>
+    <td><b>Octal</b></td>
+    <td><b>Binary</b></td>
+    <td><b>File mode</b></td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>000</td>
+    <td>---</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>001</td>
+    <td>--x</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>010</td>
+    <td>-w-</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>011</td>
+    <td>-wx</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>100</td>
+    <td>r--</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>101</td>
+    <td>r-x</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>110</td>
+    <td>rw-</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>111</td>
+    <td>rwx</td>
+  </tr>
+</table>
+
+### 8.5 `chmod` Symbolic Notation
+<table>
+  <tr>
+    <td><b>Symbol</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>u</td>
+    <td>Short for "user" but means the file or directory owner.</td>
+  </tr>
+  <tr>
+    <td>g</td>
+    <td>Group owner.</td>
+  </tr>
+  <tr>
+    <td>o</td>
+    <td>Short for "others" but means world.</td>
+  </tr>
+  <tr>
+    <td>a</td>
+    <td>Short for "all." This is a combination of u, g, and o.</td>
+  </tr>
+</table>
+
+### 8.6 `chmod` Symbolic Notation Examples
+<table>
+  <tr>
+    <td><b>Notation</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>u+x</td>
+    <td>Add execute permission for the owner.</td>
+  </tr>
+  <tr>
+    <td>u-x</td>
+    <td>remove execute permission from the owner.</td>
+  </tr>
+  <tr>
+    <td>+x</td>
+    <td>Add execute permission or the owner, group, and world. This is equivalent to a+x.</td>
+  </tr>
+  <tr>
+    <td>o-rw</td>
+    <td>Remove the read and write permissions from anyone besides the owner and group owner.</td>
+  </tr>
+  <tr>
+    <td>go=rw</td>
+    <td>Set the group owner and anyone besides the owner to have read and write permissions. If either the group owner or the world previously had execute permission, it is removed.</td>
+  </tr>
+  <tr>
+    <td>u+x,go=rx</td>
+    <td>Add execute permission for the owner and set the permissions for the group and others to read and execute. Multiple specifications may be separated by commas.</td>
+  </tr>
+</table>
+
+### 8.7 `chown` Argument Examples
+<table>
+  <tr>
+    <td><b>Argument</b></td>
+    <td><b>Results</b></td>
+  </tr>
+  <tr>
+    <td>bob</td>
+    <td>Changes the ownership of the file from its current owner to user bob.</td>
+  </tr>
+  <tr>
+    <td>bob:users</td>
+    <td>Changes the ownership of the file from its current owner to user bob and changes the file grou powner to group users.</td>
+  </tr>
+  <tr>
+    <td>:admins</td>
+    <td>Changes the group owner to the group admins. The file owner is unchanged.</td>
+  </tr>
+  <tr>
+    <td>bob:</td>
+    <td>Changes the file owner from the current owner to user bob and changes the group owner to the login group of user bob.</td>
+  </tr>
+</table>
+
+## 9. Processes
+`ps` Report a snapshot of current processes<br/>
+`top` Display tasks<br/>
+`jobs` List active jobs<br/>
+`bg` Place a job in the background<br/>
+`fg` Place a job in the foreground<br/>
+`kill` Send a signal to a process<br/>
+`killall` Kill processes by name<br/>
+`shutdown` Shut down or reboot the system
+
+### 9.1 Process States
+<table>
+  <tr>
+    <td><b>State</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>R</td>
+    <td>Running. This means the process is running or ready to run.</td>
+  </tr>
+  <tr>
+    <td>S</td>
+    <td>Sleeping. The process is not running; rather, it is waiting for an event, such as a keystroke or network packet.</td>
+  </tr>
+  <tr>
+    <td>D</td>
+    <td>Uninterruptible sleep. The process is waiting for I/O such as a disk drive.</td>
+  </tr>
+  <tr>
+    <td>T</td>
+    <td>Stopped. The process has been instrubted to stop. You'll learn more about this later in the chapter.</td>
+  </tr>
+  <tr>
+    <td>Z</td>
+    <td>A defunt or "zombie" process. This is a child process that has terminated but has not been cleaned up by its parent.</td>
+  </tr>
+  <tr>
+    <td> < </td>
+    <td>A high-priority process. It's possible to grant more importance to a process, giving it more time on the CPU. This property of a process is called <i>niceness</i>. A process with high priority is said to be less nice because it's taking more of the CPU's time, which leaves less for everybody else.</td>
+  </tr>
+  <tr>
+    <td>N</td>
+    <td>A low-priority process. A process with low priority (a nice process) will get processor time only after other processes with higher priority have been serviced.</td>
+  </tr>
+</table>
+
+### 9.2 BSD Style `ps` Column Headers
+<table>
+  <tr>
+    <td><b>Header</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>USER</td>
+    <td>User ID. This is the owner of the process.</td>
+  </tr>
+  <tr>
+    <td>%CPU</td>
+    <td>CPU usage in percent.</td>
+  </tr>
+  <tr>
+    <td>%MEM</td>
+    <td>Memory usage in percent.</td>
+  </tr>
+  <tr>
+    <td>VSZ</td>
+    <td>Virtual memory size.</td>
+  </tr>
+  <tr>
+    <td>RSS</td>
+    <td>Resident set size. This is the amount of physical memory (RAM) the process is using in kilobytes.</td>
+  </tr>
+  <tr>
+    <td>START</td>
+    <td>Time when the process started. For values over 24 hours, a date is used.</td>
+  </tr>
+</table>
+
+### 9.3 `top` Information Fields
+<table>
+  <tr>
+    <td><b>Row</b></td>
+    <td><b>Field</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>top</td>
+    <td>This is the name of the program.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>14:59:20</td>
+    <td>This is the current time of day.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>up 6:30</td>
+    <td>This is called <i>uptime</i>. It is the amount of time since the machine was last booted. In this example, the system has been up for six and a half hours.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>2 users</td>
+    <td>There are two users logged in.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>load average:</td>
+    <td><i>Load average</i> refers to the number of processes that are waiting ro un; that is, the number of processes that are in a runnable state and are sharing the CPU. Three values are shown, each for a different period fo time. The first is the average for the last 60 seconds, the next is the previous 5 minutes, and finally the previous 15 minutes. Values less than 1.0 indicate that th emachine is not busy.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Tasks:</td>
+    <td>This summarizes the number of processes and their various process states.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Cpu(s):</td>
+    <td>This row describes the character of the activities that the CPU is performing.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>0.7%us</td>
+    <td>0.7 percent of the CPU is being used for <i>user processes</i>. This means processes outside the kernel.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>1.0%sy</td>
+    <td>1.0 percent of the CPU is being used for <i>system</i> (kernel) processes.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>0.0%ni</td>
+    <td>0.0 percent of the CPU is being used by "nice" (low-priority) processes.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>98.3%id</td>
+    <td>98.3 percent of the CPU is idle.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>0.0%wa</td>
+    <td>0.0 percent of the CPU is waiting for I/O.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Mem:</td>
+    <td>This shows how physical RAM is being used.</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Swap</td>
+    <td>This shows how swap space (virtual memory) is being used.</td>
+  </tr>
+</table>
+
+
 
 
 
