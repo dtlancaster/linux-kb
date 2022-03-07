@@ -1369,7 +1369,7 @@
   </tr>
 </table>
 
-### 10.6 Other Process-Related Commands
+### 9.5 Other Process-Related Commands
 <table>
   <tr>
     <td><b>Command</b></td>
