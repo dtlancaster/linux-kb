@@ -43,6 +43,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.1 Process States](https://github.com/dtlancaster/linux-guide/blob/master/README.md#91-process-states)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.2 BSD Style `ps` Column Headers](https://github.com/dtlancaster/linux-guide/blob/master/README.md#92-bsd-style-ps-column-headers)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.3 `top` Information Fields](https://github.com/dtlancaster/linux-guide/blob/master/README.md#93-top-information-fields)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.4 Common Signals](https://github.com/dtlancaster/linux-guide/blob/master/README.md#94-common-signals)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.5 Other Process-Related Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#95-other-process-related-commands)<br/>
 
 # I. Learning the Shell
 
@@ -1308,9 +1310,88 @@
   </tr>
 </table>
 
+### 9.4 Common Signals
+<table>
+  <tr>
+    <td><b>Number</b></td>
+    <td><b>Name</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>HUP</td>
+    <td>Hang up. This is a vestige of the good old days when terminals were attached to remote computers with phone lines and modems. The signal is used to indicate to programs that the controlling terminal has "hung up". The effect of this signal can be demonstrated by closing a terminal session. The foreground program running on the terminal will be sent the signal and will terminate. This signal is also used by many daemon programs to cause a reinitialization. This means that when a daemon is sent this signal, it will restart and reread its configuration file. The Apache web server is an example of a daemon that uses the HUP signal in this way.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>INT</td>
+    <td>Interrupt. This performs the same function as Ctrl-C sent from the terminal. It will usually terminate a program.</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>KILL</td>
+    <td>Kill. This signal is special. Whereas programs may choose to handle signals sent to them in different ways, including ignoring them all together, the KILL signal is never actually sent to the target program. Rather, the kernel immediately terminates the process. When a process is terminated in this manner, it is given no opportunity to "clean up" after itself or save its work. For this reason, the KILL signal should be used only as a last resort when other termination signals fail.</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>TERM</td>
+    <td>Terminate. This is the default signal sent by the KILL command. If a program is still "alive" enough to receive signals, it will terminate.</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>CONT</td>
+    <td>Continue. Thi swill restore a process after a STOP or TSTP signal. This signal is sent by the bg and fg commands.</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>STOP</td>
+    <td>Stop. This signal causes a process to pause without terminating. Like the KILL signal, it is not sent to the target process, and thus it cannot be ignored.</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>TSTP</td>
+    <td>Terminal stop. This is the signal sent by the terminal when Ctrl-Z is pressed. Unlike the STOP signal, the TSP signal is received by the program, but the program may choose to ignore it.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>QUIT</td>
+    <td>Quit.</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>SEGV</td>
+    <td>Segmentation violation. This signal is sent if a program makes illegal use of memory; that is, if we tried to write somewhere it was not allowed to write.</td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>WINCH</td>
+    <td>Window change. This is the signal sent by the system when a window changes size. Some programs, such as top and less, will respond to this signal by redrawing themselves to fit the new window dimensions.</td>
+  </tr>
+</table>
 
-
-
+### 10.6 Other Process-Related Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>pstree</td>
+    <td>Outputs a process list arranged in a tree-like pattern showing the parent-child relationships between processes.</td>
+  </tr>
+  <tr>
+    <td>vmstat</td>
+    <td>Outputs a snapshot of system resource usage including memory, swap, and disk I/O. To see a continuous display, follow the command with a time delay (in seconds) for updates. Here's an example: vmstat 5. Terminate the output with Ctrl-C.</td>
+  </tr>
+  <tr>
+    <td>xload</td>
+    <td>A graphical program that draws a graph showing system load over time.</td>
+  </tr>
+  <tr>
+    <td>tload</td>
+    <td>Similar to the xload program but draws the graph in the terminal. Terminate the output with Ctrl-C.</td>
+  </tr>
+</table>
 
 
 
