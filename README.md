@@ -45,6 +45,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.3 `top` Information Fields](https://github.com/dtlancaster/linux-guide/blob/master/README.md#93-top-information-fields)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.4 Common Signals](https://github.com/dtlancaster/linux-guide/blob/master/README.md#94-common-signals)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.5 Other Process-Related Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#95-other-process-related-commands)<br/>
+[II. Configuration and the Environment](https://github.com/dtlancaster/linux-guide/blob/master/README.md#ii-configuration-and-the-environment)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10. The Environment](https://github.com/dtlancaster/linux-guide/blob/master/README.md#10-the-environment)<br/>
 
 # I. Learning the Shell
 
@@ -1393,7 +1395,13 @@
   </tr>
 </table>
 
+# II. Configuration and the Environment
 
+## 10. The Environment
+`printenv` Print part or all of the environment<br/>
+`set` Set shell options<br/>
+`export` Export environment to a subsequently executed programs<br/>
+`alias` Create an alias for a command
 
 
 
