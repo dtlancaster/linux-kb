@@ -47,6 +47,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[9.5 Other Process-Related Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#95-other-process-related-commands)<br/>
 [II. Configuration and the Environment](https://github.com/dtlancaster/linux-guide/blob/master/README.md#ii-configuration-and-the-environment)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10. The Environment](https://github.com/dtlancaster/linux-guide/blob/master/README.md#10-the-environment)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.1 Environment Variables](https://github.com/dtlancaster/linux-guide/blob/master/README.md#101-environment-variables)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.2 Startup Files for Login Shell Sessions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#102-startup-files-for-login-shell-sessions)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.3 Startup Files for Non-Login Shell Sessions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#103-startup-files-for-non-login-shell-sessions)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.4 `.bashrc` Addition Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#104-.bashrc-addition-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11. Introduction to `vi`](https://github.com/dtlancaster/linux-guide/blob/master/README.md#11-introduction-to-vi)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.1 Cursor Movement Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#111-cursor-movement-keys)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.2 Line Opening Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#112-line-opening-keys)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.3 Text Deletion Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#113-text-deletion-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.4 Yanking Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#114-yanking-commands)<br/>
 
 # I. Learning the Shell
 
@@ -1403,10 +1412,307 @@
 `export` Export environment to a subsequently executed programs<br/>
 `alias` Create an alias for a command
 
+### 10.1 Environment Variables
+<table>
+  <tr>
+    <td><b>Variable</b></td>
+    <td><b>Contents</b></td>
+  </tr>
+  <tr>
+    <td>DISPLAY</td>
+    <td>The name of your display if you are running a graphical environment. Usually this is :0, meaning the first display generatedd by the X server.</td>
+  </tr>
+  <tr>
+    <td>EDITOR</td>
+    <td>The name of the program to be used for text editing.</td>
+  </tr>
+  <tr>
+    <td>SHELL</td>
+    <td>The name of your shell program.</td>
+  </tr>
+  <tr>
+    <td>HOME</td>
+    <td>The pathname of your home directory.</td>
+  </tr>
+  <tr>
+    <td>LANG</td>
+    <td>Defines the character set and collation order of your language.</td>
+  </tr>
+  <tr>
+    <td>OLDPWD</td>
+    <td>The previous working directory.</td>
+  </tr>
+  <tr>
+    <td>PAGER</td>
+    <td>The name of the program to be used for paging output. This is often set to <i>/usr/bin/less</i>.</td>
+  </tr>
+  <tr>
+    <td>PATH</td>
+    <td>A colon-separated list of directories that are searched when you enter the name of an executable program.</td>
+  </tr>
+  <tr>
+    <td>PS1</td>
+    <td>Stands for "prompt string 1." This defines the contents of the shell prompt. As we will later see, this can be extensively customized.</td>
+  </tr>
+  <tr>
+    <td>PWD</td>
+    <td>The current working directory.</td>
+  </tr>
+  <tr>
+    <td>TERM</td>
+    <td>The name of your terminal type. Unix-like systems support many terminal protocols; this variable sets the protocol to be used with your terminal emulator.</td>
+  </tr>
+  <tr>
+    <td>TZ</td>
+    <td>Specifies your time zone. Most Unix-like systems maintain the computer's internal clock in <i>Coordinated Universal Time</i> (UTC) and then display the local time by applying an offset specified by this variable.</td>
+  </tr>
+  <tr>
+    <td>USER</td>
+    <td>Your username.</td>
+  </tr>
+</table>
 
+### 10.2 Startup Files for Login Shell Sessions
+<table>
+  <tr>
+    <td><b>File</b></td>
+    <td><b>Contents</b></td>
+  </tr>
+  <tr>
+    <td>/etc/profile</td>
+    <td>A global configuration script that applies to all users.</td>
+  </tr>
+  <tr>
+    <td>~/.bash_profile</td>
+    <td>A user's personal startup file. It can be used to extend or override settings in the global configuration script.</td>
+  </tr>
+  <tr>
+    <td>~/.bash_login</td>
+    <td>If ~/.bash_profile is not found, bash attempts to read this script.</td>
+  </tr>
+  <tr>
+    <td>~/.profile</td>
+    <td>If neither ~/.bash_profile nor ~/.bash_login is found, bash attempts to read this file. This is the default in Debian-based distributions, such as Ubuntu.</td>
+  </tr>
+</table>
 
+### 10.3 Startup Files for Non-Login Shell Sessions
+<table>
+  <tr>
+    <td><b>File</b></td>
+    <td><b>Contents</b></td>
+  </tr>
+  <tr>
+    <td>/etc/bash.bashrc</td>
+    <td>A global configuration script that applies to all users.</td>
+  </tr>
+  <tr>
+    <td>~/.bashrc</td>
+    <td>A user's personal startup file. It can be used to extend or override settings in the global configuration script.</td>
+  </tr>
+</table>
 
+### 10.4 `.bashrc` Addition Examples
+<table>
+  <tr>
+    <td><b>Line</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>umask 0002</td>
+    <td>Sets the umask to solve the problem with the shared directories we discussed in Chapter 9.</td>
+  </tr>
+  <tr>
+    <td>export HISTCONTROL=ignoredups</td>
+    <td>Causes the shell's history recording feature to ignore a command if the same command was just recorded.</td>
+  </tr>
+  <tr>
+    <td>export HISTSIZE=1000</td>
+    <td>Increases the size of the command history from the usual default of 500 lines to 1,000 lines.</td>
+  </tr>
+  <tr>
+    <td>alias l.='ls -d .* --color=auto'</td>
+    <td>Creates a new command called l., which displays all directory entries that begin with a dot.</td>
+  </tr>
+  <tr>
+    <td>alias ll='ls -l --color=auto'</td>
+    <td>Creates a new command called ll, which displays a long-format directory listing.</td>
+  </tr>
+</table>
 
+## 11. Introduction to `vi`
+
+### 11.1 Cursor Movement Keys
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Moves the cursor</b></td>
+  </tr>
+  <tr>
+    <td>l or right arrow</td>
+    <td>Right one character.</td>
+  </tr>
+  <tr>
+    <td>h or left arrow</td>
+    <td>Left one character.</td>
+  </tr>
+  <tr>
+    <td>j or down arrow</td>
+    <td>Down one line.</td>
+  </tr>
+  <tr>
+    <td>k or up arrow</td>
+    <td>Up one line.</td>
+  </tr>
+  <tr>
+    <td>0 (zero)</td>
+    <td>To the beginning of the current line.</td>
+  </tr>
+  <tr>
+    <td>^</td>
+    <td>To the first non-whitespace character on the current line.</td>
+  </tr>
+  <tr>
+    <td>$</td>
+    <td>To the end of the current line.</td>
+  </tr>
+  <tr>
+    <td>w</td>
+    <td>To the beginning of the next word or punctuation character.</td>
+  </tr>
+  <tr>
+    <td>W</td>
+    <td>To the beginning of the next word, ignoring punctuation characters.</td>
+  </tr>
+  <tr>
+    <td>b</td>
+    <td>To the beginning of the previous word or punctuation character.</td>
+  </tr>
+  <tr>
+    <td>B</td>
+    <td>To the beginning of the previous word, ignoring punctuation characters.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-F or Page Down</td>
+    <td>Down one page.</td>
+  </tr>
+  <tr>
+    <td>Ctrl-B or Page Up</td>
+    <td>Up one page.</td>
+  </tr>
+  <tr>
+    <td><i>number</i>G</td>
+    <td>To line number. For example, 1G moves to the first line of the file.</td>
+  </tr>
+  <tr>
+    <td>G</td>
+    <td>To the last line of the file.</td>
+  </tr>
+</table>
+
+### 11.2 Line Opening Keys
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Opens</b></td>
+  </tr>
+  <tr>
+    <td>o</td>
+    <td>The line below the current line</td>
+  </tr>
+  <tr>
+    <td>O</td>
+    <td>The line above the current line</td>
+  </tr>
+</table>
+
+### 11.3 Text Deletion Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Deletes</b></td>
+  </tr>
+  <tr>
+    <td>x</td>
+    <td>The current character</td>
+  </tr>
+  <tr>
+    <td>3x</td>
+    <td>The current charcater and the next two characters</td>
+  </tr>
+  <tr>
+    <td>dd</td>
+    <td>The current line</td>
+  </tr>
+  <tr>
+    <td>5dd</td>
+    <td>The current line and the next four lines</td>
+  </tr>
+  <tr>
+    <td>dW</td>
+    <td>From the current cursor position to the beginning of the next word</td>
+  </tr>
+  <tr>
+    <td>d$</td>
+    <td>From the current cursor location to the end of the current line</td>
+  </tr>
+  <tr>
+    <td>d0</td>
+    <td>From the current cursor location to the beginning of the next line</td>
+  </tr>
+  <tr>
+    <td>d^</td>
+    <td>From the current cursor location to the first non-whitespace character in the line</td>
+  </tr>
+  <tr>
+    <td>dG</td>
+    <td>From the current line to the end of the file</td>
+  </tr>
+  <tr>
+    <td>d20G</td>
+    <td>From the current line to the twentieth line of the file</td>
+  </tr>
+</table>
+
+### 11.4 Yanking Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Copies</b></td>
+  </tr>
+  <tr>
+    <td>yy</td>
+    <td>The current line</td>
+  </tr>
+  <tr>
+    <td>5yy</td>
+    <td>The current line and the next four lines</td>
+  </tr>
+  <tr>
+    <td>yW</td>
+    <td>From the current cursor position to the beginning of the next word</td>
+  </tr>
+  <tr>
+    <td>y$</td>
+    <td>From the current cursor location to the end of the current line</td>
+  </tr>
+  <tr>
+    <td>y0</td>
+    <td>From the current cursor location to the beginning of the line</td>
+  </tr>
+  <tr>
+    <td>y^</td>
+    <td>From the current cursor location to the first non-whitespace character in the line</td>
+  </tr>
+  <tr>
+    <td>yG</td>
+    <td>From the current line to the end of the file</td>
+  </tr>
+  <tr>
+    <td>y20G</td>
+    <td>From the current line to the twentieth line of the file</td>
+  </tr>
+</table>
 
 
 
