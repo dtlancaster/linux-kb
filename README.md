@@ -63,6 +63,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.2 Escape Sequences Used to Set Text Colors](https://github.com/dtlancaster/linux-guide/blob/master/README.md#122-escape-sequences-used-to-set-text-colors)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.3 Escape Sequences Used to Set Background Color](https://github.com/dtlancaster/linux-guide/blob/master/README.md#123-escape-sequences-used-to-set-background-color)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.4 Cursor Movement Escape Sequences](https://github.com/dtlancaster/linux-guide/blob/master/README.md#124-cursor-movement-escape-sequences)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.5 Breakdown of Complex Prompt String](https://github.com/dtlancaster/linux-guide/blob/master/README.md#125-breakdown-of-complex-prompt-string)<br/>
+[III. Common Tasks and Essential Tools](https://github.com/dtlancaster/linux-guide/blob/master/README.md#iii-common-tasks-and-essential-tools)<br/>
 
 
 # I. Learning the Shell
@@ -2028,11 +2030,61 @@
   </tr>
 </table>
 
+`PS1="\[\033[s\033[0;0H\033[0;41m\033[K\033[1;33m\t\033[0m\033[u\]<\u@\h \W>\$ "`
 
+### 12.5 Breakdown of Complex Prompt String
+<table>
+  <tr>
+    <td><b>Sequence</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>\[</td>
+    <td>Begin a non-printing character sequence. The purpose of this is to allow bash to properly calculate the size of the visible prompt. Without an accurate calculation, command line editing features cannot position the cursor correctly.</td>
+  </tr>
+  <tr>
+    <td>\033[s</td>
+    <td>Store the cursor position. This is needed to return to the prompt location after the bar and clock have been drawn at the top of the screen. Be aware that some terminal emulators do not recognize this code.</td>
+  </tr>
+  <tr>
+    <td>\033[0;0H</td>
+    <td>Move the cursor to the upper-left corner, which is line 0, column 0.</td>
+  </tr>
+  <tr>
+    <td>\033[0;41m</td>
+    <td>Set the background color to red.</td>
+  </tr>
+  <tr>
+    <td>\033[K</td>
+    <td>Clear from the current cursor location (the top-left corner) to the end of the line. Because the background color is now red, the line is cleared to that color, creating our bar. Note that clearing to the end fo the line does not change the cursor position, which remains in the upper-left corner.</td>
+  </tr>
+  <tr>
+    <td>\033[1;33m</td>
+    <td>Set the text color to yellow.</td>
+  </tr>
+  <tr>
+    <td>\t</td>
+    <td>Display the current time. While this is a "printing" element, we still include it in the non-printing portion of the prompt since we don't want bash to include the clock when calculating the true size of the displayed prompt.</td>
+  </tr>
+  <tr>
+    <td>\033[0m</td>
+    <td>Turn off color. This affects both the text and the background.</td>
+  </tr>
+  <tr>
+    <td>\033[u</td>
+    <td>Restore the cursor position saved earlier.</td>
+  </tr>
+  <tr>
+    <td>\]</td>
+    <td>End the non-printing characters sequence.</td>
+  </tr>
+  <tr>
+    <td> <\u@\h \W>\$ </td>
+    <td>Prompt string.</td>
+  </tr>
+</table>
 
-
-
-
+# III. Common Tasks and Essential Tools
 
 
 
