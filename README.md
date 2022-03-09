@@ -50,12 +50,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.1 Environment Variables](https://github.com/dtlancaster/linux-guide/blob/master/README.md#101-environment-variables)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.2 Startup Files for Login Shell Sessions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#102-startup-files-for-login-shell-sessions)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.3 Startup Files for Non-Login Shell Sessions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#103-startup-files-for-non-login-shell-sessions)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.4 `.bashrc` Addition Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#104-.bashrc-addition-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[10.4 `.bashrc` Addition Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#104-bashrc-addition-examples)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11. Introduction to `vi`](https://github.com/dtlancaster/linux-guide/blob/master/README.md#11-introduction-to-vi)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.1 Cursor Movement Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#111-cursor-movement-keys)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.2 Line Opening Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#112-line-opening-keys)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.3 Text Deletion Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#113-text-deletion-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.4 Yanking Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#114-yanking-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.5 Global Search-and-Replace Syntax](https://github.com/dtlancaster/linux-guide/blob/master/README.md#115-global-search-and-replace-syntax)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.6 Replace Confirmation Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#116-replace-confirmation-keys)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12. Customizing the Prompt](https://github.com/dtlancaster/linux-guide/blob/master/README.md#12-customizing-the-prompt)<br/>
 
 # I. Learning the Shell
 
@@ -1714,6 +1717,66 @@
   </tr>
 </table>
 
+`:%s/Line/line/g`
 
+### 11.5 Global Search-and-Replace Syntax
+<table>
+  <tr>
+    <td><b>Item</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>:</td>
+    <td>The colon character starts an ex command.</td>
+  </tr>
+  <tr>
+    <td>%</td>
+    <td>This specifies the range of lines for the operation. % is a shortcut meaning from the first line to the last line. Alternately, the range could have been specified 1,$, which means "from line 1 to the last line in the file." If the range of lines is omitted, the operation is performed only on the current line.</td>
+  </tr>
+  <tr>
+    <td>s</td>
+    <td>This specifies the operation. In this case, it's substitution (search-and-replace).</td>
+  </tr>
+  <tr>
+    <td>/Line/line/</td>
+    <td>This specifies the search pattern and the replacement text.</td>
+  </tr>
+  <tr>
+    <td>g</td>
+    <td>This means "global" in the sense that the search-and-replace is performed on every instance of the search string in the line. If omitted, only the first instance of the search string on each line is replaced.</td>
+  </tr>
+</table>
 
+### 11.6 Replace Confirmation Keys
+<table>
+  <tr>
+    <td><b>Key</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>y</td>
+    <td>Perform the substitution.</td>
+  </tr>
+  <tr>
+    <td>n</td>
+    <td>Skip this instance of the pattern.</td>
+  </tr>
+  <tr>
+    <td>a</td>
+    <td>Perform the substitution on this and all subsequent instances of the pattern.</td>
+  </tr>
+  <tr>
+    <td>q or Esc</td>
+    <td>Quit substituting.</td>
+  </tr>
+  <tr>
+    <td>l</td>
+    <td>Perform this subsitution and then quit. This is short for "last."</td>
+  </tr>
+  <tr>
+    <td>Ctrl-E, Ctrl-Y</td>
+    <td>Scroll down and scroll up, respectively. This is useful for viewing the context of the proposed substitution.</td>
+  </tr>
+</table>
 
+## 12. Customizing the Prompt
