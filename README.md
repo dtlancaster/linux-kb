@@ -59,6 +59,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.5 Global Search-and-Replace Syntax](https://github.com/dtlancaster/linux-guide/blob/master/README.md#115-global-search-and-replace-syntax)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.6 Replace Confirmation Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#116-replace-confirmation-keys)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12. Customizing the Prompt](https://github.com/dtlancaster/linux-guide/blob/master/README.md#12-customizing-the-prompt)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.1 Escape Codes Used in Shell Prompts](https://github.com/dtlancaster/linux-guide/blob/master/README.md#121-escape-codes-used-in-shell-prompts)<br/>
 
 # I. Learning the Shell
 
@@ -1780,3 +1781,103 @@
 </table>
 
 ## 12. Customizing the Prompt
+
+### 12.1 Escape Codes Used in Shell Prompts
+<table>
+  <tr>
+    <td><b>Sequence</b></td>
+    <td><b>Value displayed</b></td>
+  </tr>
+  <tr>
+    <td>\a</td>
+    <td>ASCII bell. This makes the computer beep when it is encountered.</td>
+  </tr>
+  <tr>
+    <td>\d</td>
+    <td>Current date in day, month, date format. For example, "Mon May 26."</td>
+  </tr>
+  <tr>
+    <td>\h</td>
+    <td>Hostname of the local machine minus the trailing domain name.</td>
+  </tr>
+  <tr>
+    <td>\H</td>
+    <td>Full hostname.</td>
+  </tr>
+  <tr>
+    <td>\j</td>
+    <td>Number of jobs running in the current shell session.</td>
+  </tr>
+  <tr>
+    <td>\l</td>
+    <td>Name of the current terminal device.</td>
+  </tr>
+  <tr>
+    <td>\n</td>
+    <td>A newline character.</td>
+  </tr>
+  <tr>
+    <td>\r</td>
+    <td>A carriage return.</td>
+  </tr>
+  <tr>
+    <td>\s</td>
+    <td>Name of the shell program.</td>
+  </tr>
+  <tr>
+    <td>\t</td>
+    <td>Current time in 24-hour hours:minutes:seconds format.</td>
+  </tr>
+  <tr>
+    <td>\T</td>
+    <td>Current time in 12-hour format.</td>
+  </tr>
+  <tr>
+    <td>\@</td>
+    <td>Current time in 12-hour AM/PM format.</td>
+  </tr>
+  <tr>
+    <td>\A</td>
+    <td>Current time in 24-hour hours:minutes format.</td>
+  </tr>
+  <tr>
+    <td>\u</td>
+    <td>Username of the current user.</td>
+  </tr>
+  <tr>
+    <td>\v</td>
+    <td>Version number of the shell.</td>
+  </tr>
+  <tr>
+    <td>\V</td>
+    <td>Version and release numbers of the shell.</td>
+  </tr>
+  <tr>
+    <td>\w</td>
+    <td>Name of the current working directory.</td>
+  </tr>
+  <tr>
+    <td>\W</td>
+    <td>Last part of the current working directory name.</td>
+  </tr>
+  <tr>
+    <td>\!</td>
+    <td>History number of the current command.</td>
+  </tr>
+  <tr>
+    <td>\#</td>
+    <td>Number of commands entered during this shell session.</td>
+  </tr>
+  <tr>
+    <td>\$</td>
+    <td>This displays a $ character unless we have superuser privileges. In that case, it displays a # instead.</td>
+  </tr>
+  <tr>
+    <td>\[</td>
+    <td>Signals the start of a series of one or more non-printing characters. This is used to embed non-printing control charcaters that manipulate the terminal emulator in some way, such as moving the cursor or changing text colors.</td>
+  </tr>
+  <tr>
+    <td>\]</td>
+    <td>Signals the end of a non-printing character sequence.</td>
+  </tr>
+</table>
