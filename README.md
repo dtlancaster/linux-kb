@@ -60,6 +60,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[11.6 Replace Confirmation Keys](https://github.com/dtlancaster/linux-guide/blob/master/README.md#116-replace-confirmation-keys)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12. Customizing the Prompt](https://github.com/dtlancaster/linux-guide/blob/master/README.md#12-customizing-the-prompt)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.1 Escape Codes Used in Shell Prompts](https://github.com/dtlancaster/linux-guide/blob/master/README.md#121-escape-codes-used-in-shell-prompts)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.2 Escape Sequences Used to Set Text Colors](https://github.com/dtlancaster/linux-guide/blob/master/README.md#122-escape-sequences-used-to-set-text-colors)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.3 Escape Sequences Used to Set Background Color](https://github.com/dtlancaster/linux-guide/blob/master/README.md#123-escape-sequences-used-to-set-background-color)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.4 Cursor Movement Escape Sequences](https://github.com/dtlancaster/linux-guide/blob/master/README.md#124-cursor-movement-escape-sequences)<br/>
+
 
 # I. Learning the Shell
 
@@ -1881,3 +1885,161 @@
     <td>Signals the end of a non-printing character sequence.</td>
   </tr>
 </table>
+
+### 12.2 Escape Sequences Used to Set Text Colors
+<table>
+  <tr>
+    <td><b>Sequence</b></td>
+    <td><b>Text color</b></td>
+    <td><b>Sequence</b></td>
+    <td><b>Text color</b></td>
+  </tr>
+  <tr>
+    <td>\033[0;30m</td>
+    <td>Black</td>
+    <td>\033[1;30m</td>
+    <td>Dark gray</td>
+  </tr>
+  <tr>
+    <td>\033[0;31m</td>
+    <td>Red</td>
+    <td>\033[1;31m</td>
+    <td>Light red</td>
+  </tr>
+  <tr>
+    <td>\033[0;32m</td>
+    <td>Green</td>
+    <td>\033[1;32m</td>
+    <td>Light green</td>
+  </tr>
+  <tr>
+    <td>\033[0;33m</td>
+    <td>Brown</td>
+    <td>\033[1;33m</td>
+    <td>Yellow</td>
+  </tr>
+  <tr>
+    <td>\033[0;34m</td>
+    <td>Blue</td>
+    <td>\033[1;34m</td>
+    <td>Light blue</td>
+  </tr>
+  <tr>
+    <td>\033[0;35m</td>
+    <td>Purple</td>
+    <td>\033[1;35m</td>
+    <td>Light purple</td>
+  </tr>
+  <tr>
+    <td>\033[0;36m</td>
+    <td>Cyan</td>
+    <td>\033[1;36m</td>
+    <td>Light cyan</td>
+  </tr>
+  <tr>
+    <td>\033[0;37m</td>
+    <td>Light gray</td>
+    <td>\033[1;37m</td>
+    <td>White</td>
+  </tr>
+</table>
+
+### 12.3 Escape Sequences Used to Set Background Color
+<table>
+  <tr>
+    <td><b>Sequence</b></td>
+    <td><b>Background color</b></td>
+  </tr>
+  <tr>
+    <td>\033[0;40m</td>
+    <td>Black</td>
+  </tr>
+  <tr>
+    <td>\033[0;41m</td>
+    <td>Red</td>
+  </tr>
+  <tr>
+    <td>\033[0;42m</td>
+    <td>Green</td>
+  </tr>
+  <tr>
+    <td>\033[0;43m</td>
+    <td>Brown</td>
+  </tr>
+  <tr>
+    <td>\033[0;44m</td>
+    <td>Blue</td>
+  </tr>
+  <tr>
+    <td>\033[0;45m</td>
+    <td>Purple</td>
+  </tr>
+  <tr>
+    <td>\033[0;46m</td>
+    <td>Cyan</td>
+  </tr>
+  <tr>
+    <td>\033[0;47m</td>
+    <td>Light gray</td>
+  </tr>
+</table>
+
+### 12.4 Cursor Movement Escape Sequences
+<table>
+  <tr>
+    <td><b>Escape code</b></td>
+    <td><b>Action</b></td>
+  </tr>
+  <tr>
+    <td>\033[<i>l</i>;<i>c</i>H</td>
+    <td>Move the cursor to line <i>l</i> and column <i>c</i></td>
+  </tr>
+  <tr>
+    <td>\033[<i>n</i>A</td>
+    <td>Move the cursor up <i>n</i> lines</td>
+  </tr>
+  <tr>
+    <td>\033[<i>n</i>B</td>
+    <td>Move the cursor down <i>n</i> lines</td>
+  </tr>
+  <tr>
+    <td>\033[<i>n</i>C</td>
+    <td>Move the cursor forward <i>n</i> characters</td>
+  </tr>
+  <tr>
+    <td>\033[<i>n</i>D</td>
+    <td>Move the cursor backward <i>n</i> characters</td>
+  </tr>
+  <tr>
+    <td>\033[2J</td>
+    <td>Clear the screen and move the cursor to the upper-left corner (line 0, column 0)</td>
+  </tr>
+  <tr>
+    <td>\033[K</td>
+    <td>Clear from the cursor position to the end of the current line</td>
+  </tr>
+  <tr>
+    <td>\033[s</td>
+    <td>Store the current cursor position</td>
+  </tr>
+  <tr>
+    <td>\033[u</td>
+    <td>Recall the stored cursor position</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
