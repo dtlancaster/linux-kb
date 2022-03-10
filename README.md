@@ -65,7 +65,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.4 Cursor Movement Escape Sequences](https://github.com/dtlancaster/linux-guide/blob/master/README.md#124-cursor-movement-escape-sequences)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[12.5 Breakdown of Complex Prompt String](https://github.com/dtlancaster/linux-guide/blob/master/README.md#125-breakdown-of-complex-prompt-string)<br/>
 [III. Common Tasks and Essential Tools](https://github.com/dtlancaster/linux-guide/blob/master/README.md#iii-common-tasks-and-essential-tools)<br/>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13. Package Management](https://github.com/dtlancaster/linux-guide/blob/master/README.md#13-package-management)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.1 Major Packaging System Families](https://github.com/dtlancaster/linux-guide/blob/master/README.md#131-major-packaging-system-families)<br/>
 
 # I. Learning the Shell
 
@@ -2086,9 +2087,23 @@
 
 # III. Common Tasks and Essential Tools
 
+## 13. Package Management
 
-
-
+### 13.1 Major Packaging System Families
+<table>
+  <tr>
+    <td><b>Packaging system</b></td>
+    <td><b>Distributions (partial listing)</b></td>
+  </tr>
+  <tr>
+    <td>Debian-style (.deb)</td>
+    <td>Debian, Ubuntu, Linux Mint, Raspbian</td>
+  </tr>
+  <tr>
+    <td>Red Hat-style (.rpm)</td>
+    <td>Fedora, CentOS, Red Hat Enterprise Linux, OpenSUSE</td>
+  </tr>
+</table>
 
 
 
