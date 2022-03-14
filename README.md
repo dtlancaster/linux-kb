@@ -67,6 +67,8 @@
 [III. Common Tasks and Essential Tools](https://github.com/dtlancaster/linux-guide/blob/master/README.md#iii-common-tasks-and-essential-tools)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13. Package Management](https://github.com/dtlancaster/linux-guide/blob/master/README.md#13-package-management)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.1 Major Packaging System Families](https://github.com/dtlancaster/linux-guide/blob/master/README.md#131-major-packaging-system-families)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.2 Packaging System Tools](https://github.com/dtlancaster/linux-guide/blob/master/README.md#132-packaging-system-tools)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.3 Package Search Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#133-package-search-commands)<br/>
 
 # I. Learning the Shell
 
@@ -2105,8 +2107,39 @@
   </tr>
 </table>
 
+### 13.2 Packaging System Tools
+<table>
+  <tr>
+    <td><b>Distributions</b></td>
+    <td><b>Low-level tools</b></td>
+    <td><b>High-level tools</b></td>
+  </tr>
+  <tr>
+    <td>Debian-style</td>
+    <td>dpkg</td>
+    <td>apt-get, apt, aptitude</td>
+  </tr>
+  <tr>
+    <td>Fedora, Red Hat Enterprise Linux, CentOS</td>
+    <td>rpm</td>
+    <td>yum, dnf</td>
+  </tr>
+</table>
 
-
-
+### 13.3 Package Search Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>apt-get update<br/>apt-cache search <i>search_string</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>yum search <i>search_string</i></td>
+  </tr>
+</table>
 
 
