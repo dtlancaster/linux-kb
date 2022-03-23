@@ -69,6 +69,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.1 Major Packaging System Families](https://github.com/dtlancaster/linux-guide/blob/master/README.md#131-major-packaging-system-families)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.2 Packaging System Tools](https://github.com/dtlancaster/linux-guide/blob/master/README.md#132-packaging-system-tools)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.3 Package Search Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#133-package-search-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.4 Package Installation Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#134-package-installation-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.5 Low-Level Package Installation Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#135-low-level-package-installation-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.6 Package Removal Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#136-package-removal-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.7 Package Update Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#137-package-update-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.8 Low-Level Package Upgrade Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#138-low-level-package-upgrade-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.9 Package Listing Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#139-package-listing-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.10 Package Status Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#1310-package-status-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.11 Package Information Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#1311-package-information-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.12 Package File Identification Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#1312-package-file-identification-commands)<br/>
 
 # I. Learning the Shell
 
@@ -2142,4 +2151,147 @@
   </tr>
 </table>
 
+### 13.4 Package Installation Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>apt-get update</td>
+    <td>apt-get install <i>package_name</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>yum install <i>package_name</i></td>
+  </tr>
+</table>
 
+
+### 13.5 Low-Level Package Installation Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>dpkg -i <i>package_file</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>rpm -i <i>package_file</i></td>
+  </tr>
+</table>
+
+### 13.6 Package Removal Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>apt-get remove <i>package_name</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>yum erase <i>package_name</i></td>
+  </tr>
+</table>
+
+### 13.7 Package Update Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>apt-get update; apt-get upgrade</td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>yum update</td>
+  </tr>
+</table>
+
+### 13.8 Low-Level Package Upgrade Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>dpkg -i <i>package_file</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>rpm -U <i>package_file</i></td>
+  </tr>
+</table>
+
+### 13.9 Package Listing Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>dpkg -l</td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>rpm -qa</td>
+</table>
+
+### 13.10 Package Status Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>dpkg -s <i>package_name</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>rpm -q <i>package_name</i></td>
+  </tr>
+</table>
+
+### 13.11 Package Information Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>apt-cache show <i>package_name</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>yum info <i>package_name</i></td>
+  </tr>
+</table>
+
+### 13.12 Package File Identification Commands
+<table>
+  <tr>
+    <td><b>Style</b></td>
+    <td><b>Command(s)</b></td>
+  </tr>
+  <tr>
+    <td>Debian</td>
+    <td>dpkg -S <i>file_name</i></td>
+  </tr>
+  <tr>
+    <td>Red Hat</td>
+    <td>rpm -qf <i>file_name</i></td>
+  </tr>
+</table>
