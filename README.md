@@ -2311,3 +2311,40 @@
 `md5sum` Calculate an MD5 checksum<br/>
 
 ### 14.1 `/etc/fstab` Fields
+<table>
+  <tr>
+    <td><b>Field</b></td>
+    <td><b>Contents</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Device</td>
+    <td>Traditionally, this fields contains the actual name of a device file associated with the physical device, such as <i>/dev/sda1</i> (the first partition of the first detected hard disk). But with today's computers, which have many devices that are hot pluggable (like USB drives), many modern Linux distributions associate a device with a text label instead. This label (which is added to the storage media when it is formatted) can be either a simple text label or a randomly generated UUID (Universallly Unique Identifier). This label is read by the operating system when the device is attached to the system. That way, no matter which device file is assigned to the actual physical device, it can still be correctly identified.</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Mount point</td>
+    <td>The directory where the device is attached to the file system tree.</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>File system type</td>
+    <td>Linux allows many file system types to be mounted. Most native Linux file systems are Fourth Extended File System (ext4), but many others are supported, such as FAT16 (msdos), FAT32 (vfat), NTFS (ntfs), CD-ROM (iso9660), etc.</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Options</td>
+    <td>File systems can be mounted with various options. It is possible, for example, to mount file systems as read-only or to prevent any programs from being executed from them (a useful security feature for removable media).</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Frequency</td>
+    <td>A single number that specifies if and when a file system is to be backed up with the dump command.</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Order</td>
+    <td>A single number that specifies in what order file systems should be checked with the fsck command.</td>
+  </tr>
+</table>
