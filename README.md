@@ -80,6 +80,15 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[13.12 Package File Identification Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#1312-package-file-identification-commands)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[14. Storage Media](https://github.com/dtlancaster/linux-guide/blob/master/README.md#14-storage-media)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[14.1 `/etc/fstab` Fields](https://github.com/dtlancaster/linux-guide/blob/master/README.md#141-etcfstab-fields)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[14.2 Linux Storage Device Names](https://github.com/dtlancaster/linux-guide/blob/master/README.md#142-linux-storage-device-names)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[15. Networking](https://github.com/dtlancaster/linux-guide/blob/master/README.md#15-networking)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[15.1 Examples of Interactive `ftp` Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#151-examples-of-interactive-ftp-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16. Searching for Files](https://github.com/dtlancaster/linux-guide/blob/master/README.md#16-searching-for-files)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.1 `find` File Types](https://github.com/dtlancaster/linux-guide/blob/master/README.md#161-find-file-types)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.2 `find` Size Units](https://github.com/dtlancaster/linux-guide/blob/master/README.md#162-find-size-units)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.4 `find` Tests](https://github.com/dtlancaster/linux-guide/blob/master/README.md#163-find-tests)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.5 `find` AND/OR Logic](https://github.com/dtlancaster/linux-guide/blob/master/README.md#165-find-andor-logic)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.6 Predefined `find` Actions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#166-predefined-file-actions)<br/>
 
 # I. Learning the Shell
 
@@ -2346,5 +2355,302 @@
     <td>6</td>
     <td>Order</td>
     <td>A single number that specifies in what order file systems should be checked with the fsck command.</td>
+  </tr>
+</table>
+
+### 14.2 Linux Storage Device Names
+<table>
+  <tr>
+    <td><b>Pattern</b></td>
+    <td><b>Device</b></td>
+  </tr>
+  <tr>
+    <td><i>/dev/fd*</i></td>
+    <td>Floppy disk drives.</td>
+  </tr>
+  <tr>
+    <td><i>/dev/hd*</i></td>
+    <td>IDE (PATA) dists on older systems. Typical motehrboards contain two IDE connectors or <i>channels</i>, each with a cable with two attachment points for drivers. The first drive on the cable is called the <i>master</i> device, and the second is called the slave device. The device names are ordered such that <i>/dev/hda</i> refers to the master device on the first channel, <i>/dev/hdb</i> is the slave device on the first channel; <i>/dev/hdc</i> is the master device on the second channel, and so on. A trailing digit indicates the partition number on the device. For example, <i>/dev/hda1</i> refers to the first partition on the first hard drive on the system, while <i>/dev/hda</i> refers to the entire drive.</td>
+  </tr>
+  <tr>
+    <td><i>/dev/lp*</i></td>
+    <td>Printers.</td>
+  </tr>
+  <tr>
+    <td><i>/dev/sd*</i></td>
+    <td>SCSI disks. On modern Linux systems, the kernel treats all disk-like devices (including PATA/SATA hard disks, flash drives, and USB mass storage devices such as portable music players and digital cameras) as SCSI disks. The rest of the naming system is similar to the older <i>/dev/hd*</i> naming scheme previously described.</td>
+  </tr>
+  <tr>
+    <td><i>/dev/sr*</i></td>
+    <td>Optical drives (CD/DVD readers and burners).</td>
+  </tr>
+</table>
+
+## 15. Networking
+`ping` Send an ICMP ECHO_REQUEST to network hosts<br/>
+`traceroute` Print the route packets trace to a network host<br/>
+`ip` Show/manipulate routing, devices, policy routing, and tunnels<br/>
+`netstat` Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships<br/>
+`ftp` Internet filel transfer program<br/>
+`wget` Non-interactive network downloader<br/>
+`ssh` OpenSSH SSH client (remote login program)<br/>
+
+### 15.1 Examples of Interactive `ftp` Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>ftp fileserver</td>
+    <td>Invole the ftp program and have it connect to the FTP sever <i>fileserver</i>.</td>
+  </tr>
+  <tr>
+    <td>anonymous</td>
+    <td>Login name. After the login prompt, a password prompt will appear. Some servers will accept a blank password; others will require a password in the form of an email address. In that case, try something like <i>user@example.com</i>.</td>
+  </tr>
+  <tr>
+    <td>cd pub/cd_images/ubuntu-18.04</td>
+    <td>Change to the directory on the remote system containing the desired file. Note that on most anonymous FTP servers, the files for public downloading are found somewhere under the <i>pub</i> directory.</td>
+  </tr>
+  <tr>
+    <td>ls</td>
+    <td>List the directory on the remote system.</td>
+  </tr>
+  <tr>
+    <td>lcd Desktop</td>
+    <td>Change the directory on the local system to <i>~/Desktop</i>. In the example, the ftp program was invoked when the working directory was ~. This command changes the working directory to <i>~/Desktop</i>.</td>
+  </tr>
+  <tr>
+    <td>get ubuntu-18.04-desktop-amd64.iso</td>
+    <td>Tell the remote system to transfer the file <i>ubuntu-18.04-desktop-amd64.iso</i> to the local system. Since the working directory on the local system was changed to <i>~/Desktop</i>, the file will be downloaded there.</td>
+  </tr>
+  <tr>
+    <td>bye</td>
+    <td>Log off the remote server and end the ftp program session. The commands quit and exit may also be used.</td>
+  </tr>
+</table>
+
+## 16. Searching for Files
+`locate` Find files by name<br/>
+`find` Search for files in a directory hierarchy<br/>
+`xargs` Build and execute command lines from standard input<br/>
+`touch` Change file times<br/>
+`stat` Display file or file system status<br/>
+
+### 16.1 `find` File Types
+<table>
+  <tr>
+    <td><b>File type</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>b</td>
+    <td>Block special device file</td>
+  </tr>
+  <tr>
+    <td>c</td>
+    <td>Character special device file</td>
+  </tr>
+  <tr>
+    <td>d</td>
+    <td>Directory</td>
+  </tr>
+  <tr>
+    <td>f</td>
+    <td>Regular file</td>
+  </tr>
+  <tr>
+    <td>l</td>
+    <td>Symbolic link</td>
+  </tr>
+</table>
+
+### 16.2 `find` Size Units
+<table>
+  <tr>
+    <td><b>Character</b></td>
+    <td><b>Unit</b></td>
+  </tr>
+  <tr>
+    <td>b</td>
+    <td>512-byte blocks. This is the default if no unit is specified.</td>
+  </tr>
+  <tr>
+    <td>c</td>
+    <td>Bytes.</td>
+  </tr>
+  <tr>
+    <td>w</td>
+    <td>2-byte words.</td>
+  </tr>
+  <tr>
+    <td>k</td>
+    <td>Kilobytes (units of 1,024 bytes).</td>
+  </tr>
+  <tr>
+    <td>M</td>
+    <td>Megabytes (units of 1,048,576 bytes).</td>
+  </tr>
+  <tr>
+    <td>G</td>
+    <td>Gigabytes (units of 1,073,741,824 bytes).</td>
+  </tr>
+</table>
+
+### 16.3 `find` Tests
+<table>
+  <tr>
+    <td><b>Test</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-cmin <i>n</i></td>
+    <td>Match files or directories whose content or attributes were last modified exactly <i>n</i> minutes ago. To specify less than <i>n</i> minutes ago, use -<i>n</i>, and to specify more than <i>n</i> minutes ago, use +<i>n</i>.</td>
+  </tr>
+  <tr>
+    <td>-cnewer <i>file</i></td>
+    <td>Match files or directories whose contents or attributes were last modified more recently than those of <i>file</i>.</td>
+  </tr>
+  <tr>
+    <td>-ctime <i>n</i></td>
+    <td>Match files or directories whose contents or attributes were last modified <i>n</i>*24 hours ago.</td>
+  </tr>
+  <tr>
+    <td>-empty</td>
+    <td>Match empty files and directories.</td>
+  </tr>
+  <tr>
+    <td>-group <i>name</i></td>
+    <td>Match file or directories belonging to group <i>name</i>. <i>name</i> may be expressed either as a group name or as a numeric group ID.</td>
+  </tr>
+  <tr>
+    <td>-iname <i>pattern</i></td>
+    <td>Like the -name test but cas-insensitive.</td>
+  </tr>
+  <tr>
+    <td>inum <i>n</i></td>
+    <td>Match files with inode number <i>n</i>. This is helpful for finding all the hard links to a particular inode.</td>
+  </tr>
+  <tr>
+    <td>-mmin <i>n</i></td>
+    <td>Match files or directories whose contents were last modified <i>n</i> minutes ago.</td>
+  </tr>
+  <tr>
+    <td>-mtime <i>n</i></td>
+    <td>Match files or directories whose contents were last modified <i>n</i>*24 hours ago.</td>
+  </tr>
+  <tr>
+    <td>-name <i>pattern</i></td>
+    <td>Match files and directories with the specified wildcard pattern.</td>
+  </tr>
+  <tr>
+    <td>-newer <i>file</i></td>
+    <td>Match files and directories whose contents were modified more recently than the specified <i>file</i>. This is useful when writing shell scripts that perform file backups. Each time you make a backup, update a file (such as a long) and then use find to determine which files have changed since the last update.</td>
+  </tr>
+  <tr>
+    <td>-nouser</td>
+    <td>Match file and directories that do not belong to a valid user. This can be used to find files belonging to deleted accounts or to detect activity by attackers.</td>
+  </tr>
+  <tr>
+    <td>-nogroup</td>
+    <td>Match files and directories that do not belong to a valid group.</td>
+  </tr>
+  <tr>
+    <td>-perm <i>mode</i></td>
+    <td>Match files or directories that have permissions set to the specified <i>mode</i>. <i>mode</i> can be expressed by either octal or symbolic notation.</td>
+  </tr>
+  <tr>
+    <td>-samefile <i>name</i></td>
+    <td>Similar to the -inum test. Match files that share the same inode number as file <i>name</i>.</td>
+  </tr>
+  <tr>
+    <td>-size <i>n</i></td>
+    <td>Match files of size <i>n</i>.</td>
+  </tr>
+  <tr>
+    <td>-type <i>c</i></td>
+    <td>Match files of type <i>c</i>.</td>
+  </tr>
+  <tr>
+    <td>-user <i>name</i></td>
+    <td>Match files or directories belonging to user <i>name</i>. The user may be expressed as a username or by a numeric user ID.</td>
+  </tr>
+</table>
+
+### 16.4 `find` Logical Operators
+<table>
+  <tr>
+    <td><b>Operator</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-and</td>
+    <td>Match if the tests on both sides of the operator are true. This can be shortened to -a. Note that when no operator is present, -and is implied by default.</td>
+  </tr>
+  <tr>
+    <td>-or</td>
+    <td>Match if a test on either side of the oeprator is true. This can be shortened to -o.</td>
+  </tr>
+  <tr>
+    <td>-not</td>
+    <td>Match if the test following the operator is false. This can be abbreviated with an exclamation point (!).</td>
+  </tr>
+  <tr>
+    <td>( )</td>
+    <td>Group tests and operators together to form larger expressions. This is used to control the precedence of the logical evaluations. By default, find evaluates from left to right. It is often necessary to override the default evaluation order to obtain the desired result. Even if not needed, it is helpful sometimes to include the grouping characters to improve the readability of the command. Note that since the parentheses have special meaning to the shell, they must be quoted when using them on the same command line to allow them to be passed as arguments to find. Usually the backslash character is used to escape them.</td>
+  </tr>
+</table>
+
+### 16.5 `find` AND/OR Logic
+<table>
+  <tr>
+    <td><b>Results of expr1</b></td>
+    <td><b>Operator</b></td>
+    <td><b>expr2 is ...</b></td>
+  </tr>
+  <tr>
+    <td>True</td>
+    <td>-and</td>
+    <td>Always performed</td>
+  </tr>
+  <tr>
+    <td>False</td>
+    <td>-and</td>
+    <td>Never performed</td>
+  </tr>
+  <tr>
+    <td>True</td>
+    <td>-or</td>
+    <td>Never performed</td>
+  </tr>
+  <tr>
+    <td>False</td>
+    <td>-or</td>
+    <td>Always performed</td>
+  </tr>
+</table>
+
+### 16.6 Predefined `find` Actions
+<table>
+  <tr>
+    <td><b>Action</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-delete</td>
+    <td>Delete the currently matching file.</td>
+  </tr>
+  <tr>
+    <td>-ls</td>
+    <td>Perform the equivalent of ls -dils on the matching file. Output is sent to standard output.</td>
+  </tr>
+  <tr>
+    <td>-print</td>
+    <td>Output the full pathname of the matching file to standard output. This is the default action if no other action is specified.</td>
+  </tr>
+  <tr>
+    <td>-quit</td>
+    <td>Quit once a match has been made.</td>
   </tr>
 </table>
