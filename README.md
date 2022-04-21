@@ -88,7 +88,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.2 `find` Size Units](https://github.com/dtlancaster/linux-guide/blob/master/README.md#162-find-size-units)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.4 `find` Tests](https://github.com/dtlancaster/linux-guide/blob/master/README.md#163-find-tests)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.5 `find` AND/OR Logic](https://github.com/dtlancaster/linux-guide/blob/master/README.md#165-find-andor-logic)<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.6 Predefined `find` Actions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#166-predefined-file-actions)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.6 Predefined `find` Actions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#166-predefined-find-actions)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[16.7 Commonly Used `find` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#167-commonly-used-find-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17. Archiving and Backup](https://github.com/dtlancaster/linux-guide/blob/master/README.md#17-archiving-and-backup)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17.1 `gzip` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#171-gzip-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17.2 `tar` Modes](https://github.com/dtlancaster/linux-guide/blob/master/README.md#172-tar-modes)<br/>
 
 # I. Learning the Shell
 
@@ -2654,3 +2658,117 @@
     <td>Quit once a match has been made.</td>
   </tr>
 </table>
+
+### 16.7 Commonly Used `find` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-depth</td>
+    <td>Direct find to process a directory's files before the directory itself. This option is automatically applied when the -delete action is specified.</td>
+  </tr>
+  <tr>
+    <td>-maxdepth <i>levels</i></td>
+    <td>Set the maximum number of levels that find will descend into a directory tree when performing tests and actions.</td>
+  </tr>
+  <tr>
+    <td>-mindepth <i>levels</i></td>
+    <td>Set the minimum number of levels that find will descend into a directory tree before applying tests and actions.</td>
+  </tr>
+  <tr>
+    <td>-mount</td>
+    <td>Direct find not to traverse directories that are mounted on other file systems.</td>
+  </tr>
+  <tr>
+    <td>-noleaf</td>
+    <td>Direct find not to optimize its search based on the assumption that it is searching a Unix-like file system. This is neeed when scanning DOS/Windows file systems and CD-ROMs.</td>
+  </tr>
+</table>
+
+## 17. Archiving and Backup
+`gzip` Compress or expand files<br/>
+`bzip2` A block sorting file compressor<br/>
+`tar` Tape archiving utility<br/>
+`zip` Package and compress files<br/>
+`rsync` Remote file and directory synchronization<br/>
+
+### 17.1 `gzip` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Long Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-c</td>
+    <td>--stdout<br/>--to-stdout</td>
+    <td>Write output to standard output and keep the original files.</td>
+  </tr>
+  <tr>
+    <td>-d</td>
+    <td>--decompress<br/>--uncompress</td>
+    <td>Decompress. This causes gzip to act like gunzip.</td>
+  </tr>
+  <tr>
+    <td>-f</td>
+    <td>--force</td>
+    <td>Force compression even if a compressed version of the original file already exists.</td>
+  </tr>
+  <tr>
+    <td>-h</td>
+    <td>--help</td>
+    <td>Display usage information.</td>
+  </tr>
+  <tr>
+    <td>-l</td>
+    <td>--list</td>
+    <td>List compression statistics for each file compressed.</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>--recursive</td>
+    <td>If one or more arguments on the command line is a directory, recursively compress files contained within them.</td>
+  </tr>
+  <tr>
+    <td>-t</td>
+    <td>--test</td>
+    <td>Test the integrity of a compressed file.</td>
+  </tr>
+  <tr>
+    <td>-v</td>
+    <td>--verbose</td>
+    <td>Display verbose messages while compressing.</td>
+  </tr>
+  <tr>
+    <td>-<i>number</i></td>
+    <td></td>
+    <td>Set amount of compression. <i>number</i> is an integer in the range of 1 (fastest, least compression) to 9 (slowest, most compression). The values 1 and 9 may also be expressed as --fast and --best, respectively. The default value is 6.</td>
+  </tr>
+</table>
+
+### 17.2 `tar` Modes
+<table>
+  <tr>
+    <td><b>Mode</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>c</td>
+    <td>Create an archive from a list o files and/or directories.</td>
+  </tr>
+  <tr>
+    <td>x</td>
+    <td>Extract an archive.</td>
+  </tr>
+  <tr>
+    <td>r</td>
+    <td>Append specified pathnames to the end of an archive.</td>
+  </tr>
+  <tr>
+    <td>t</td>
+    <td>List the contents of an archive.</td>
+  </tr>
+</table>
+
