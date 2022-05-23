@@ -93,6 +93,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17. Archiving and Backup](https://github.com/dtlancaster/linux-guide/blob/master/README.md#17-archiving-and-backup)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17.1 `gzip` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#171-gzip-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17.2 `tar` Modes](https://github.com/dtlancaster/linux-guide/blob/master/README.md#172-tar-modes)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[18. Regular Expressions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#18-regular-expressions)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[18.1 `grep` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#181-grep-options)<br/>
 
 # I. Learning the Shell
 
@@ -2772,3 +2774,48 @@
   </tr>
 </table>
 
+## 18. Regular Expressions
+
+### 18.1 `grep` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Long option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-i</td>
+    <td>--ignore-case</td>
+    <td>Ignore case. Do not distinguish between uppercase and lowercase characters.</td>
+  </tr>
+  <tr>
+    <td>-v</td>
+    <td>--invert-match</td>
+    <td>Invert match. Normally, grep prints lines that contain a match. This option causes grep to print every line that does not contain a match.</td>
+  </tr>
+  <tr>
+    <td>-c</td>
+    <td>--count</td>
+    <td>Print the number of matches (or non-matches if the -v option is also specified) instead of the lines themselves.</td>
+  </tr>
+  <tr>
+    <td>-l</td>
+    <td>--files-with-matches</td>
+    <td>Print the name of each file that contains a match instead of the lines themselves.</td>
+  </tr>
+  <tr>
+    <td>-L</td>
+    <td>--files-without-match</td>
+    <td>Like the -l option, but print only the names of files that do not contain matches.</td>
+  </tr>
+  <tr>
+    <td>-n</td>
+    <td>--line-number</td>
+    <td>Prefix each matching line with the number of the line within the file.</td>
+  </tr>
+  <tr>
+    <td>-h</td>
+    <td>--no-filename</td>
+    <td>For multifile searches, suppress the output of filenames.</td>
+  </tr>
+</table>
