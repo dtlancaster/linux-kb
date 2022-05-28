@@ -101,6 +101,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.1 Common `sort` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#191-common-sort-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.2 Common `uniq` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#192-common-uniq-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.3 `cut` Selection Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#193-cut-selection-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.4 `diff` Change Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#194-diff-change-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.5 `diff` Context Format Change Indicators](https://github.com/dtlancaster/linux-guide/blob/master/README.md#195-diff-context-format-change-indicators)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.6 `diff` Unified Format Change Indicators](https://github.com/dtlancaster/linux-guide/blob/master/README.md#196-diff-unified-format-change-indicators)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.7 `sed` Address Notation](https://github.com/dtlancaster/linux-guide/blob/master/README.md#197-sed-address-notation)<br/>
 
 # I. Learning the Shell
 
@@ -3039,5 +3043,105 @@
     <td></td>
     <td>--complement</td>
     <td>Extract the entire line of text, except for those portions specified by -c and/or -f.</td>
+  </tr>
+</table>
+
+### 19.4 `diff` Change Commands
+<table>
+  <tr>
+    <td><b>Change</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td><i>r1ar2</i></td>
+    <td>Append the lines at the position <i>r2</i> in the second file to the position <i>r1</i> in the first file.</td>
+  </tr>
+  <tr>
+    <td><i>r1cr2</i></td>
+    <td>Change (replace) the lines at position <i>r1</i> with the liens at the position <i>r2</i> in the second file.</td>
+  </tr>
+  <tr>
+    <td><i>r1dr2</i></td>
+    <td>Delete the lines in the first file at position <i>r1</i>, which would have appeared at range <i>r2</i> in the second file.</td>
+  </tr>
+</table>
+
+### 19.5 `diff` Context Format Change Indicators
+<table>
+  <tr>
+    <td><b>Indicator</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>blank</td>
+    <td>A line shown for context. It does nto indicate a difference between the two files.</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>A line deleted. This line will appear in the first file but not in the second file.</td>
+  </tr>
+  <tr>
+    <td>+</td>
+    <td>A line added. This line will appear in the second file but not in the first file.</td>
+  </tr>
+  <tr>
+    <td>!</td>
+    <td>A line changed. The two versions of the line will be displayed, each in its respective section of the change group.</td>
+  </tr>
+</table>
+
+### 19.6 `diff` Unified Format Change Indicators
+<table>
+  <tr>
+    <td><b>Character</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>blank</td>
+    <td>This line is shared by both files.</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>This line was removed from the first file.</td>
+  </tr>
+  <tr>
+    <td>+</td>
+    <td>This line was added to the first file.</td>
+  </tr>
+</table>
+
+### 19.7 `sed` Address Notation
+<table>
+  <tr>
+    <td><b>Address</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td><i>n</i></td>
+    <td>A line number where <i>n</i> is a positive integer.</td>
+  </tr>
+  <tr>
+    <td>$</td>
+    <td>The last line.</td>
+  </tr>
+  <tr>
+    <td>/<i>regexp</i>/</td>
+    <td>Lines matching a POSIX basic regular expression. Note that the regular expression is delimited by slash characters. Optionally, the regular expression may be delimited by an alternate character, by specifying the expression with \<i>cregexpc</i>, where <i>c</i> is the alternate character.</td>
+  </tr>
+  <tr>
+    <td><i>addr1</i>,<i>addr2</i></td>
+    <td>A range of lines from <i>addr1</i> to <i>addr2</i>, inclusive. Addresses may be any of the single address forms listed earlier.</td>
+  </tr>
+  <tr>
+    <td><i>first</i>~<i>step</i></td>
+    <td>Match the line represented by the number <i>first</i> and then each subsequent line at <i>step</i> intervals. For example, <i>1</i>~<i>2</i> refers to each odd numbered line, and <i>5</i>~<i>5</i> referes to the fifth line and every fifth line thereafter.</td>
+  </tr>
+  <tr>
+    <td><i>addr1</i>,+<i>n</i></td>
+    <td>Match <i>addr1</i> and the following <i>n</i> lines.</td>
+  </tr>
+  <tr>
+    <td><i>addr!</i></td>
+    <td>Match all lines except <i>addr</i>, which may be any of the forms listed earlier.</td>
   </tr>
 </table>
