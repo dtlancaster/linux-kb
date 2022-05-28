@@ -95,6 +95,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[17.2 `tar` Modes](https://github.com/dtlancaster/linux-guide/blob/master/README.md#172-tar-modes)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[18. Regular Expressions](https://github.com/dtlancaster/linux-guide/blob/master/README.md#18-regular-expressions)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[18.1 `grep` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#181-grep-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[18.2 POSIX Character Classes](https://github.com/dtlancaster/linux-guide/blob/master/README.md#182-posix-character-classes)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[18.3 Specifying the Number of Matches](https://github.com/dtlancaster/linux-guide/blob/master/README.md#183-specifying-the-number-of-matches)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19. Text Processing](https://github.com/dtlancaster/linux-guide/blob/master/README.md#19-text-processing)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.1 Common `sort` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#191-common-sort-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.2 Common `uniq` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#192-common-uniq-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.3 `cut` Selection Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#193-cut-selection-options)<br/>
 
 # I. Learning the Shell
 
@@ -2817,5 +2823,221 @@
     <td>-h</td>
     <td>--no-filename</td>
     <td>For multifile searches, suppress the output of filenames.</td>
+  </tr>
+</table>
+
+### 18.2 POSIX Character Classes
+<table>
+  <tr>
+    <td><b>Character class</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>[:alnum:]</td>
+    <td>The alphanumeric characters. In ASCII, equivalent to: [A-Za-z0-9].</td>
+  </tr>
+  <tr>
+    <td>[:word:]</td>
+    <td>The same as [:alnum:], with the addition of the underscore (_) character.</td>
+  </tr>
+  <tr>
+    <td>[:alpha:]</td>
+    <td>The alphabetic characters. In ASCII, equivalent to: [A-Za-z].</td>
+  </tr>
+  <tr>
+    <td>[:blank:]</td>
+    <td>Includes the space and tab characters.</td>
+  </tr>
+  <tr>
+    <td>[:cntrl:]</td>
+    <td>The ASCII control codes. Includes the ASCII characters 0 through 31 and 127.</td>
+  </tr>
+  <tr>
+    <td>[:digit:]</td>
+    <td>The numerals 0 through 9.</td>
+  </tr>
+  <tr>
+    <td>[:graph:]</td>
+    <td>The visible characters. In ASCII, it includes characters 33 through 126.</td>
+  </tr>
+  <tr>
+    <td>[:lower:]</td>
+    <td>The lowercase characters.</td>
+  </tr>
+  <tr>
+    <td>[:punct:]</td>
+    <td>The puncutation characters. In ASCII, equivalent to: [-!"#$%&'()*+,./:;<=>?@[\\\]_`{|}~].</td>
+  </tr>
+  <tr>
+    <td>[:print:]</td>
+    <td>The printable characters. All the characters in [:graph:] plus the space character.</td>
+  </tr>
+  <tr>
+    <td>[:space:]</td>
+    <td>The whitespace characters including space, tab, carriage return, newline, vertical tab, and form feed. In ASCII, equivalent to [ \t\r\n\v\f].</td>
+  </tr>
+  <tr>
+    <td>[:upper:]</td>
+    <td>The uppercase characters.</td>
+  </tr>
+  <tr>
+    <td>[:xdigit:]</td>
+    <td>Characters used to express hexadecimal numbers. In ASCII, equivalent to: [0-9A-Fa-f].</td>
+  </tr>
+</table>
+
+### 18.3 Specifying the Number of Matches
+<table>
+  <tr>
+    <td><b>Specifier</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>{<i>n</i>}</td>
+    <td>Match the preceding element if it occurs exactly <i>n</i> times.</td>
+  </tr>
+  <tr>
+    <td>{<i>n</i>,<i>m</i>}</td>
+    <td>Match the preceding element if it occurs at least <i>n</i> times but no more than <i>m</i> times.</td>
+  </tr>
+  <tr>
+    <td>{<i>n</i>,}</td>
+    <td>Match the preceding element if it occurs <i>n</i> or more times.</td>
+  </tr>
+  <tr>
+    <td>{,<i>m</i>}</td>
+    <td>Match the preceding element if it occurs no more than <i>m</i> times.</td>
+  </tr>
+</table>
+
+## 19. Text Processing
+`cat` Concatenate files and print on the standard output<br/>
+`sort` Sort lines of text files<br/>
+`uniq` Report or omit repeated lines<br/>
+`cut` Remove sections from each line of files<br/>
+`paste` Merge lines of files<br/>
+`join` Join lines of two files on a common field<br/>
+`comm` Compare two sorted files line by line<br/>
+`diff` Compare files line by line<br/>
+`patch` Apply a diff file to an original<br/>
+`tr` Translate or delete characters<br/>
+`sed` Stream editor for filtering and transforming text<br/>
+`aspell` Interactive spellchecker<br/>
+
+### 19.1 Common `sort` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Long option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-b</td>
+    <td>--ignore-leading-blanks</td>
+    <td>By default, sorting is performed on the entire line, starting with the first charcater in the line. This option causes <i>sort</i> to ignore leading spaces in lines and calculates sorting based on the first non-whitespace character on the line.</td>
+  </tr>
+  <tr>
+    <td>-f</td>
+    <td>--ignore-case</td>
+    <td>Make sorting case-insensitive.</td>
+  </tr>
+  <tr>
+    <td>-n</td>
+    <td>--numeric-sort</td>
+    <td>Perform sorting based on the numeric evaluation of a string. Using this option allows sorting to be performed on numeric values rather than alphabetic values.</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>--reverse</td>
+    <td>Sort in reverse order. Results are in descending rather than ascending order.</td>
+  </tr>
+  <tr>
+    <td>-k</td>
+    <td>--key=<i>field1</i>[,<i>field2</i>]</td>
+    <td>Sort based on a key field located from <i>field1</i> to <i>field2</i> rather than the entire line. See the following discussion.</td>
+  </tr>
+  <tr>
+    <td>-m</td>
+    <td>--merge</td>
+    <td>Treat each argument as the name of a presorted file. Merge multiple files into a single sorted result without performing any additional sorting.</td>
+  </tr>
+  <tr>
+    <td>-o</td>
+    <td>--output=<i>file</i></td>
+    <td>Send sorted output to <i>file</i> rather than standard output.</td>
+  </tr>
+  <tr>
+    <td>-t</td>
+    <td>--field-separator=char</td>
+    <td>Define the field-separator character. By default, fields are separated by spaces or tabs.</td>
+  </tr>
+</table>
+
+### 19.2 Common `uniq` Options
+
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Long option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-c</td>
+    <td>--count</td>
+    <td>Output a list of duplicate lines preceded by the number of times the line occurs.</td>
+  </tr>
+  <tr>
+    <td>-d</td>
+    <td>--repeated</td>
+    <td>Output only repeated lines, rather than unique lines.</td>
+  </tr>
+  <tr>
+    <td>-f <i>n</i></td>
+    <td>--skip-fields=<i>n</i></td>
+    <td>Ignore <i>n</i> leading fields in each line. Fields are separated by whitespace as they are in <i>sort</i>; however, unlike <i>sort</i>, <i>uniq</i> has no option for setting an alternate field separator.</td>
+  </tr>
+  <tr>
+    <td>-i</td>
+    <td>--ignore-case</td>
+    <td>Ignore case during the line comparisons.</td>
+  </tr>
+  <tr>
+    <td>-s <i>n</i></td>
+    <td>--skip-chars=<i>n</i></td>
+    <td>Skip (ignore) the leading <i>n</i> characters of each line.</td>
+  </tr>
+  <tr>
+    <td>-u</td>
+    <td>--unique</td>
+    <td>Output only unique lines. Lines with duplicates are ignored.</td>
+  </tr>
+</table>
+
+### 19.3 Cut Selection Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Long option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-c <i>list</i></td>
+    <td>--characters=<i>list</i></td>
+    <td>Extract the portion of the line defined by <i>list</i>. The list may consist of one or more comma-separated numerical ranges.</td>
+  </tr>
+  <tr>
+    <td>-f <i>list</i></td>
+    <td>--fields=<i>list</i></td>
+    <td>Extract one or more fields from the line as defined by <i>list</i>. The list may contain one or more fields or field ranges separated by commas.</td>
+  </tr>
+  <tr>
+    <td>-d <i>delim</i></td>
+    <td>--delimiter=<i>delim</i></td>
+    <td>When -f is specified, use <i>delim</i> as the field delimiting character. By default, fields must be separated by a single tab character.</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>--complement</td>
+    <td>Extract the entire line of text, except for those portions specified by -c and/or -f.</td>
   </tr>
 </table>
