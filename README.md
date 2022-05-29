@@ -105,6 +105,11 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.5 `diff` Context Format Change Indicators](https://github.com/dtlancaster/linux-guide/blob/master/README.md#195-diff-context-format-change-indicators)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.6 `diff` Unified Format Change Indicators](https://github.com/dtlancaster/linux-guide/blob/master/README.md#196-diff-unified-format-change-indicators)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.7 `sed` Address Notation](https://github.com/dtlancaster/linux-guide/blob/master/README.md#197-sed-address-notation)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[19.8 `sed` Basic Editing Commands](https://github.com/dtlancaster/linux-guide/blob/master/README.md#198-sed-basic-editing-commands)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20. Formatting Output](https://github.com/dtlancaster/linux-guide/blob/master/README.md#20-formatting-output)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.1 `nl` Markup](https://github.com/dtlancaster/linux-guide/blob/master/README.md#201-nl-markup)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.2 Common `nl` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#202-common-nl-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.3 `fmt` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#203-fmt-options)<br/>
 
 # I. Learning the Shell
 
@@ -3143,5 +3148,155 @@
   <tr>
     <td><i>addr!</i></td>
     <td>Match all lines except <i>addr</i>, which may be any of the forms listed earlier.</td>
+  </tr>
+</table>
+
+### 19.8 `sed` Basic Editing Commands
+<table>
+  <tr>
+    <td><b>Command</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>=</td>
+    <td>Output the current line number.</td>
+  </tr>
+  <tr>
+    <td>a</td>
+    <td>Append text after the current line.</td>
+  </tr>
+  <tr>
+    <td>d</td>
+    <td>Delete the current line.</td>
+  </tr>
+  <tr>
+    <td>i</td>
+    <td>Insert text in front of the current line.</td>
+  </tr>
+  <tr>
+    <td>p</td>
+    <td>Print the current line. By default, sed prints every line and only edits lines that match a specified address within the file. The default behavior can be overridden by specifying the -n option.</td>
+  </tr>
+  <tr>
+    <td>q</td>
+    <td>Exit sed without processing any more lines. If the -n option is not specified, output the current line.</td>
+  </tr>
+  <tr>
+    <td>Q</td>
+    <td>Exit sed without processing any more lines.</td>
+  </tr>
+  <tr>
+    <td>s/<i>regexp</i>/<i>replacement</i>/</td>
+    <td>Substitute the contents of <i>replacement</i> wherever <i>regexp</i> is found. <i>replacement</i> may include the special character &, which is equivalent to the text matched by <i>regexp</i>. In addition, <i>replacement</i> may include the sequences \1 through \9, which are the contents of the corresponding subexpressions in <i>regexp</i>. After the trailing slash following replacement, an optional flag may be specified to modify the s command's behavior.</td>
+  </tr>
+  <tr>
+    <td>y/<i>set1</i>/<i>set2</i></td>
+    <td>Perform transliteration by converting characters from <i>set1</i> to the corresponding characters in <i>set2</i>. Note that unlike tr, sed requires that both sets be of the same length.</td>
+  </tr>
+</table>
+
+## 20. Formatting Output
+`nl` Number lines<br/>
+`fold` Wrap each line to a specified length<br/>
+`fmt` A simple text formatter<br/>
+`pr` Prepare text for printing<br/>
+`printf` Format and print data<br/>
+`groff` A document formatting system<br/>
+
+### 20.1 `nl` Markup
+<table>
+  <tr>
+    <td><b>Markup</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>\:\:\:</td>
+    <td>Start of logical page header.</td>
+  </tr>
+  <tr>
+    <td>\:\:</td>
+    <td>Start of logical page body.</td>
+  </tr>
+  <tr>
+    <td>\:</td>
+    <td>Start of logical page footer.</td>
+  </tr>
+</table>
+
+### 20.2 Common `nl` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Meaning</b></td>
+  </tr>
+  <tr>
+    <td>-b <i>style</i></td>
+    <td>Set body numbering to <i>style</i>, where <i>style</i> is one of the following:<br/>
+      a = Number all lines.<br/>
+      t = Number only non-blank lines. This is the default.<br/>
+      n = None.<br/>
+      <i>pregexp</i> = Number only lines matching basic regular expression <i>regexp</i>.</td>
+  <tr/>
+  <tr>
+    <td>-f <i>style</i></td>
+    <td>Set footer numbering to <i>style</i>. The default is n (none).</td>
+  </tr>
+  <tr>
+    <td>-h <i>style</i></td>
+    <td>Set header numbering to <i>style</i>. The default is n (none).</td>
+  </tr>
+  <tr>
+    <td>-i <i>number</i></td>
+    <td>Set page numbering increment to <i>number</i>. The default is 1.</td>
+  </tr>
+  <tr>
+    <td>-n <i>format</i></td>
+    <td>Sets numbering format to <i>format</i>, where <i>format</i> is one of the following:<br/>
+      ln = Left justified, without leading zeros.<br/>
+      rn = Right justified, without leading zeros. This is the default.<br/>
+      rz = Right justified, with leading zeros.</td>
+  <tr>
+    <td>-p</td>
+    <td>Do not reset page numbering at the beginning of each logical page.</td>
+  </tr>
+  <tr>
+    <td>-s <i>string</i></td>
+    <td>Add <i>string</i> to the end of each line number to create a separator. The default is a single tab character.</td>
+  </tr>
+  <tr>
+    <td>-v <i>number</i></td>
+    <td>Set the first line number of each logical page to <i>number</i>. The default is 1.</td>
+  </tr>
+  <tr>
+    <td>-w <i>width</i></td>
+    <td>Set the width of the line number field to <i>width</i>. The default is 6.</td>
+  </tr>
+</table>
+
+### 20.3 `fmt` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-c</td>
+    <td>Operate in crown <i>margin</i> mode. This preserves the indentation of the first two lines of a paragraph. Subsequent lines are alinged with the indentation of the second line.</td>
+  </tr>
+  <tr>
+    <td>-p <i>string</i></td>
+    <td>Format only those lines beginning with the prefix <i>string</i>. After formatting, the contents of <i>string</i> are prefixed to each reformatted line. This option can be used to format text in source code comments. For example, any programming language or configuration file that uses a # character to delineate a comment could be formatted by specifying -p '# ' so that only the comments will be formatted.</td>
+  </tr>
+  <tr>
+    <td>-s</td>
+    <td>Split-only mode. In this mode, lines will only be split to fit the specified column width. Short lines will not be joined to fill lines. This mode is useful when formatting text such as code where joining is not desired.</td>
+  </tr>
+  <tr>
+    <td>-u</td>
+    <td>Perform uniform spacing. This will apply traditional "typewriter-style" formatting to the text. This means a single space between words and two spaces between sentences. This mode is useful for removing <i>justification</i>, that is, text that has been padded with spaces to force alignment on both the left and right margins.</td>
+  </tr>
+  <tr>
+    <td>-w <i>width</i></td>
+    <td>Format text to fit within a column <i>width</i> characters wide. The default is 75 characters. Note: fmt actually formats lines slightly shorter than the specified width to allow for line balancing.</td>
   </tr>
 </table>
