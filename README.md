@@ -110,6 +110,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.1 `nl` Markup](https://github.com/dtlancaster/linux-guide/blob/master/README.md#201-nl-markup)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.2 Common `nl` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#202-common-nl-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.3 `fmt` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#203-fmt-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.4 Common `printf` Data Type Specifiers](https://github.com/dtlancaster/linux-guide/blob/master/README.md#204-common-printf-data-type-specifiers)<br/>
 
 # I. Learning the Shell
 
@@ -3298,5 +3299,41 @@
   <tr>
     <td>-w <i>width</i></td>
     <td>Format text to fit within a column <i>width</i> characters wide. The default is 75 characters. Note: fmt actually formats lines slightly shorter than the specified width to allow for line balancing.</td>
+  </tr>
+</table>
+
+### 20.4 Common `printf` Data Type Specifiers
+<table>
+  <tr>
+    <td><b>Specifier</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>d</td>
+    <td>Format a number as a signed decimal integer.</td>
+  </tr>
+  <tr>
+    <td>f</td>
+    <td>Format and output a floating-point number.</td>
+  </tr>
+  <tr>
+    <td>o</td>
+    <td>Format an integer as an octal number.</td>
+  </tr>
+  <tr>
+    <td>s</td>
+    <td>Format a string.</td>
+  </tr>
+  <tr>
+    <td>x</td>
+    <td>Format an integer as a hexadecimal number using lowercase a to f where needed.</td>
+  </tr>
+  <tr>
+    <td>X</td>
+    <td>Same as x but use uppercase letters.</td>
+  </tr>
+  <tr>
+    <td>%</td>
+    <td>Print a literal % symbol (i.e., specify %%).</td>
   </tr>
 </table>
