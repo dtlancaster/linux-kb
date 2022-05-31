@@ -111,6 +111,14 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.2 Common `nl` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#202-common-nl-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.3 `fmt` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#203-fmt-options)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.4 Common `printf` Data Type Specifiers](https://github.com/dtlancaster/linux-guide/blob/master/README.md#204-common-printf-data-type-specifiers)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.5 `printf` Conversion Specification Components](https://github.com/dtlancaster/linux-guide/blob/master/README.md#205-printf-conversion-specification-components)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[20.6 `printf` Conversion Specification Examples](https://github.com/dtlancaster/linux-guide/blob/master/README.md#206-printf-conversion-specification-examples)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[21. Printing](https://github.com/dtlancaster/linux-guide/blob/master/README.md#21-printing)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[21.1 Common `pr` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#211-common-pr-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[21.2 Common `lpr` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#212-common-lpr-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[21.3 Common `lp` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#213-common-lp-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[21.4 `a2ps` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#213-common-lp-options)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[21.5 Common `lpstat` Options](https://github.com/dtlancaster/linux-guide/blob/master/README.md#215-common-lpstat-options)<br/>
 
 # I. Learning the Shell
 
@@ -3335,5 +3343,365 @@
   <tr>
     <td>%</td>
     <td>Print a literal % symbol (i.e., specify %%).</td>
+  </tr>
+</table>
+
+### 20.5 `printf` Conversion Specification Components
+<table>
+  <tr>
+    <td><b>Component</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td><i>flags</i></td>
+    <td>There are five different flags:<br/>
+      #: Use the <i>alternate format</i> for output. This varies by data type. For o (octal number) conversion, the output is prefixed with 0. For x and X (hexadecimal number) conversions, the output is prefixed with 0x or 0X, respectively.<br/>
+      0 (zero): Pad the output with zeros. This means that the field will be filled with leading zeros, as in 000380.<br/>
+      - (dash): Left-align the output. By default, printf right-aligns output.<br/>
+      ' ' (space): Produce a leading space for positive numbers.<br/>
+      + (plus sign): Sign positive numbers. By default, printf only signs negative numbers.</td>
+  </tr>
+  <tr>
+    <td><i>width</i></td>
+    <td>A number specifying the minimum field width.</td>
+  </tr>
+  <tr>
+    <td><i>.precision</i></td>
+    <td>For floating-point numbers, specify the number of digits of precision to be output after the decimal point. For string conversion, <i>precision</i> specifies the number of characters to output.</td>
+  </tr>
+</table>
+
+### 20.6 `printf` Conversion Specification Examples
+<table>
+  <tr>
+    <td><b>Argument</b></td>
+    <td><b>Format</b></td>
+    <td><b>Result</b></td>
+    <td><b>Notes</b></td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%d"</td>
+    <td>380</td>
+    <td>Simple formatting of an integer.</td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%#x"</td>
+    <td>0x17c</td>
+    <td>Integer formatted as a hexadecimal number using the "alternate format" flag.</td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%05d"</td>
+    <td>00380</td>
+    <td>Integer formatted with leading zeros (padding) and a minimum field width of five characters.</td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%05.5f"</td>
+    <td>380.00000</td>
+    <td>Number formatted as a floating-point number with padding and five decimal places of precision. Since the specified minimum field width (5) is less than the actual width of the formatted number, the padding has no effect.</td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%010.5f"</td>
+    <td>0380.00000</td>
+    <td>By increasing the minimum field width to 10, the padding is now visible.</td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%+d"</td>
+    <td>+380</td>
+    <td>The + flag signs a positive number.</td>
+  </tr>
+  <tr>
+    <td>380</td>
+    <td>"%-d"</td>
+    <td>380</td>
+    <td>The - flag left-aligns the formatting.</td>
+  </tr>
+  <tr>
+    <td>abcdefghijk</td>
+    <td>"%5s"</td>
+    <td>abcdefghijk</td>
+    <td>A string formatted with a minimum field width.</td>
+  </tr>
+  <tr>
+    <td>abcdefghijk</td>
+    <td>"%.5s"</td>
+    <td>abcde</td>
+    <td>By applying precision to a string, it is truncated.</td>
+  </tr>
+</table>
+
+## 21. Printing
+`pr` Convert text files for printing<br/>
+`lpr` Print files<br/>
+`a2ps` Format files for printing on a PostScript printer<br/>
+`lpstat` Show printer status information<br/>
+`lpq` Show printer queue status<br/>
+`lprm` Cancel print jobs<br/>
+
+### 21.1 Common `pr` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td><i>+first[:last]</i></td>
+    <td>Output a range of pages starting with <i>first</i> and, optionally, ending with <i>last</i>.</td>
+  </tr>
+  <tr>
+    <td><i>-columns</i></td>
+    <td>Organize the content of the page into the number of columns specified by <i>columns</i>.</td>
+  </tr>
+  <tr>
+    <td>-a</td>
+    <td>By default, multicolumn output is listed vertically. By adding the -a (across) option, content is listed horizontally.</td>
+  </tr>
+  <tr>
+    <td>-d</td>
+    <td>Double-space output.</td>
+  </tr>
+  <tr>
+    <td>-D <i>format</i></td>
+    <td>Format the date displayed in page headers using <i>format</i>. See the man page for the date command for a description of the format string.</td>
+  </tr>
+  <tr>
+    <td>-f</td>
+    <td>Use form feeds rather than carriage returns to separate pages.</td>
+  </tr>
+  <tr>
+    <td>-h <i>header</i></td>
+    <td>In the center portion of the page header, use <i>header</i> rather than the name of the file being processed.</td>
+  </tr>
+  <tr>
+    <td>-l <i>length</i></td>
+    <td>Set page length to <i>length</i>. The default is 66 (US letter at 6 lines per inch).</td>
+  </tr>
+  <tr>
+    <td>-n</td>
+    <td>Number lines.</td>
+  </tr>
+  <tr>
+    <td>-o <i>offset</i></td>
+    <td>Create a left margin <i>offset</i> characters wide.</td>
+  </tr>
+  <tr>
+    <td>-w <i>width</i></td>
+    <td>Set the page width to <i>width</i>. The default is 72.</td>
+  </tr>
+</table>
+
+### 21.2 Common `lpr` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-# <i>number</i></td>
+    <td>Set number of copies to <i>number</i>.</td>
+  </tr>
+  <tr>
+    <td>-p</td>
+    <td>Print each page with a shaded header with the date, time, job name, and page number. This so-called pretty-print option can be used when printing text files.</td>
+  </tr>
+  <tr>
+    <td>-P <i>printer</i></td>
+    <td>Specify the name of the printer used for output. IF no printer is specified, the system's default printer is used.</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>Delete files after printing. This would be useful for programs that produce temporary printer-output files.</td>
+  </tr>
+</table>
+
+### 21.3 Common `lp` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-d <i>printer</i></td>
+    <td>Set the destination (printer) to <i>printer</i>. If no <i>d</i> option is specified, the system default printer is used.</td>
+  </tr>
+  <tr>
+    <td>-n <i>number</i></td>
+    <td>Set the number of copies to <i>number</i>.</td>
+  </tr>
+  <tr>
+    <td>-o landscape</td>
+    <td>Set output to landscape orientation.</td>
+  </tr>
+  <tr>
+    <td>-o fitplot</td>
+    <td>Scale the file to fit the page. This is useful when printing images, such as JPEG files.</td>
+  </tr>
+  <tr>
+    <td>-o scaling=<i>number</i></td>
+    <td>Scale file to <i>number</i>. The value of 100 fills the page. Values less than 100 are reduced, whiel values greater than 100 cause the file to be printed across multiple pages.</td>
+  </tr>
+  <tr>
+    <td>-o cpi=<i>number</i></td>
+    <td>Set the output characters per inch to <i>number</i>. The default is 10.</td>
+  </tr>
+  <tr>
+    <td>-o lpi=<i>number</i></td>
+    <td>Set the output lines per inch to <i>number</i>. The default is 6.</td>
+  </tr>
+  <tr>
+    <td>-o page-bottom=<i>points</i><br/>
+      -o page-left=<i>points</i><br/>
+      -o page-right=<i>points</i><br/>
+      -o page-top=<i>points</i></td>
+    <td>Set the page margins. Values are expressed in <i>points</i>, a unit of typographic measurement. There are 72 points to an inch.</td>
+  </tr>
+  <tr>
+    <td>-P <i>pages</i></td>
+    <td>Specify the list of pages. <i>pages</i> may be expressed as a comma-separated list and/or a range, for example, 1,3,5,7-10.</td>
+  </tr>
+</table>
+
+### 21.4 `a2ps` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>--center-tile=<i>text</i></td>
+    <td>Set center page tile to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>--columns=<i>number</i></td>
+    <td>Arrange pages into <i>number</i> columns. The default is 2.</td>
+  </tr>
+  <tr>
+    <td>footer=<i>text</i></td>
+    <Td>Set page footer to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>--guess</td>
+    <td>Report the types of files given as arguments. Since a2ps tries to convert and format all types of data, this option can be useful for predicting what a2ps will do when given a particular file.</td>
+  </tr>
+  <tr>
+    <td>--left-footer=<i>text</i></td>
+    <td>Set the left-page footer to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>--left-tile=<i>text</i></td>
+    <td>Set the left-page tile to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>--line-numbers=<i>interval</i></td>
+    <td>Number lines of output every <i>interval</i> lines.</td>
+  </tr>
+  <tr>
+    <td>--list=defaults</td>
+    <td>Display default settings.</td>
+  </tr>
+  <tr>
+    <td>--pages=<i>range</i></td>
+    <td>Print pages in range.</td>
+  </tr>
+  <tr>
+    <td>--right-footer=<i>text</i></td>
+    <td>Set the right-page footer to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>--right-tile=<i>text</i></td>
+    <td>Set the right-page tile to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>--rows=<i>number</i></td>
+    <td>Arrange pages into <i>number</i> rows. The default is 1.</td>
+  </tr>
+  <tr>
+    <td>-B</td>
+    <td>No page headers.</td>
+  </tr>
+  <tr>
+    <td>-b <i>text</i></td>
+    <td>Set the page header to <i>text</i>.</td>
+  </tr>
+  <tr>
+    <td>-f <i>size</i></td>
+    <td>Use <i>size</i> point font.</td>
+  </tr>
+  <tr>
+    <td>-l <i>number</i></td>
+    <td>Set characters per line to <i>number</i>. This and the -L option (see the next entry) can be used to make files paginated with other programs, such as pr, fit correctly on the page.</td>
+  </tr>
+  <tr>
+    <td>-L <i>number</i></td>
+    <td>Set lines per page to <i>number</i>.</td>
+  </tr>
+  <tr>
+    <td>-M <i>name</i></td>
+    <td>Use a media <i>name</i>, such as A4.</td>
+  </tr>
+  <tr>
+    <td>-n <i>number</i></td>
+    <td>Output <i>number</i> copies of each page.</td>
+  </tr>
+  <tr>
+    <td>-o <i>file</i></td>
+    <td>Send output to <i>file</i>. If <i>file</i> is specified as -, use standard output.</td>
+  </tr>
+  <tr>
+    <td>-P <i>printer</i></td>
+    <td>Use <i>printer</i>. If a printer is not specified, the system default printer is used.</td>
+  </tr>
+  <tr>
+    <td>-R</td>
+    <td>Portrait orientation.</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>Landscape orientation.</td>
+  </tr>
+  <tr>
+    <td>-T <i>number</i></td>
+    <td>Set tab stops to every <i>number</i> characters.</td>
+  </tr>
+  <tr>
+    <td>-u <i>text</i></td>
+    <td>Underlay (watermark) pages with <i>text</i>.</td>
+  </tr>
+</table>
+
+### 21.5 Common `lpstat` Options
+<table>
+  <tr>
+    <td><b>Option</b></td>
+    <td><b>Description</b></td>
+  </tr>
+  <tr>
+    <td>-a [<i>printer</i>...]</td>
+    <Td>Display the state of the printer's queue for <i>printer</i>. Note that this is the status of the printer queue's ability to accept jobs, not the status of the physical printers. If no printers are specified, all print queues are shown.</td>
+  </tr>
+  <tr>
+    <td>-d</td>
+    <td>Display th ename of the system's default printer.</td>
+  </tr>
+  <tr>
+    <td>-p [<i>printer</i>...]</td>
+    <td>Display the status of the specified <i>printer</i>. If no printers are specified, all printers are shown.</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>Display the status of the print server.</td>
+  </tr>
+  <tr>
+    <td>-s</td>
+    <td>Display a status summary.</td>
+  </tr>
+  <tr>
+    <td>-t</td>
+    <td>Display a complete status report.</td>
   </tr>
 </table>
